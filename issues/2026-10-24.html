@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="一分鐘看懂本週市場：環球視野，基本面為本。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阿維每週市場筆記">
+<meta property="og:description" content="一分鐘看懂本週市場，以及它和你的存款、供樓、投資有甚麼關係。">
+<meta property="og:image" content="https://ahwai79.github.io/weekly/og.png">
+<meta property="og:url" content="https://ahwai79.github.io/weekly/">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>阿維每週市場筆記</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: one narrow reading column, like a printed client letter; a banded masthead, three figures, then the fundamentals "thermometer" as the centrepiece. */
+:root{
+  --bg:#F3F5F4; --paper:#FFFFFF; --ink:#16211F; --muted:#5B6866; --line:#DCE3E1;
+  --accent:#0E5A52; --accent-soft:#E2EEEB;
+  --ok:#2F7A4C; --ok-soft:#E3F1E8; --warn:#A86B00; --warn-soft:#FBF0D9; --bad:#A63A32; --bad-soft:#F7E3E1;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1615; --paper:#162120; --ink:#E6ECEA; --muted:#9AA9A6; --line:#2A3735;
+  --accent:#6CC3B6; --accent-soft:#1D312E;
+  --ok:#7FCB98; --ok-soft:#1B2E23; --warn:#E6B65A; --warn-soft:#33291A; --bad:#EE8F86; --bad-soft:#3A2220;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1615; --paper:#162120; --ink:#E6ECEA; --muted:#9AA9A6; --line:#2A3735;
+  --accent:#6CC3B6; --accent-soft:#1D312E;
+  --ok:#7FCB98; --ok-soft:#1B2E23; --warn:#E6B65A; --warn-soft:#33291A; --bad:#EE8F86; --bad-soft:#3A2220;
+  color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px;display:flex;flex-direction:column;gap:20px}
+.mast{display:flex;align-items:center;gap:14px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--accent);color:var(--paper);display:grid;place-items:center;font-family:var(--serif);font-size:20px;flex:none;overflow:hidden}
+.life-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:520px){.life-grid{grid-template-columns:1fr}}
+.life-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.life-card h3{font-family:var(--serif);font-size:18px;margin:0}
+.life-card .big{font-family:var(--mono);font-size:22px;font-weight:600;margin:6px 0 0;font-variant-numeric:tabular-nums;line-height:1.4}
+.life-card .cap{font-size:12.5px;color:var(--muted);margin:0 0 8px;line-height:1.5}
+.life-card p{margin:0}
+.up{color:var(--warn)}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.mast-text{min-width:0}
+.brand{font-family:var(--serif);font-weight:700;font-size:19px;letter-spacing:.02em;line-height:1.3}
+.issue{font-size:13px;color:var(--muted);letter-spacing:.04em}
+.hero{margin:0;display:flex;flex-direction:column;gap:6px}
+.hero canvas{display:block;width:100%;max-width:100%;aspect-ratio:16/9;border-radius:14px;background:#10292C}
+.hero figcaption{font-size:12.5px;color:var(--muted);letter-spacing:.03em}
+.btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent);padding:9.5px 18px}
+.simple{background:var(--accent-soft);border-radius:14px;padding:18px 16px;display:flex;flex-direction:column;gap:12px}
+.simple h2{font-family:var(--serif);font-size:20px;line-height:1.4;margin:0;text-wrap:balance}
+.simple-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.simple-list li{display:grid;grid-template-columns:76px 1fr;gap:10px;align-items:start}
+.simple-list li span:last-child{min-width:0;font-size:17px;line-height:1.7}
+.tag{justify-self:start;font-size:13px;font-weight:700;color:var(--paper);background:var(--accent);border-radius:999px;padding:3px 10px;white-space:nowrap;margin-top:3px}
+.simple-more{margin:0;font-size:14px;color:var(--accent);font-weight:700}
+.lead h1{font-family:var(--serif);font-weight:700;font-size:clamp(26px,7vw,34px);line-height:1.3;margin:0 0 10px;text-wrap:balance}
+.lead p{margin:0;color:var(--muted)}
+.section-label{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:700;margin:0 0 10px}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;min-width:0}
+.stat .k{font-size:13px;color:var(--muted);line-height:1.4}
+.stat .v{font-family:var(--mono);font-weight:600;font-size:clamp(17px,4.6vw,22px);font-variant-numeric:tabular-nums;line-height:1.4;margin-top:4px}
+.stat .d{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
+.down{color:var(--bad)} .flat{color:var(--muted)}
+@media (max-width:420px){.stats{grid-template-columns:1fr}.stat{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap}.stat .v{margin-top:0}}
+.thermo{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.thermo-head{padding:16px 16px 4px}
+.thermo-head h2{font-family:var(--serif);font-size:21px;margin:0}
+.thermo-head p{margin:2px 0 0;font-size:14px;color:var(--muted)}
+.row{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:16px;border-top:1px solid var(--line)}
+.row:first-of-type{border-top:0}
+.gauge{display:flex;flex-direction:column;align-items:center;gap:6px}
+.gauge .name{font-family:var(--serif);font-weight:700;font-size:17px}
+.pill{font-size:12px;font-weight:700;border-radius:999px;padding:2px 10px;white-space:nowrap;display:inline-flex;align-items:center;gap:5px}
+.pill::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.pill.ok{color:var(--ok);background:var(--ok-soft)} .pill.warn{color:var(--warn);background:var(--warn-soft)}
+.row p{margin:0;min-width:0}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:500}
+.mood{border-left:3px solid var(--warn);padding:2px 0 2px 14px}
+.mood h3,.view h3{font-family:var(--serif);font-size:18px;margin:0 0 4px}
+.mood p{margin:0;color:var(--ink)}
+.view{background:var(--accent-soft);border-radius:12px;padding:18px 16px}
+.view p{margin:0 0 12px}
+.watch{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.watch li{display:grid;grid-template-columns:76px 1fr;gap:10px}
+.watch .when{font-family:var(--mono);font-size:14px;color:var(--accent);font-weight:600}
+.cta{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 16px;display:flex;flex-direction:column;gap:12px}
+.cta h3{font-family:var(--serif);font-size:19px;margin:0}
+.cta p{margin:0;color:var(--muted)}
+.cta-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--paper);text-decoration:none;font-weight:700;border-radius:999px;padding:11px 20px;border:0;font-size:16px;font-family:var(--sans);cursor:pointer}
+.btn:focus-visible,.copy:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
+.phone{font-family:var(--mono);font-size:15px;user-select:all}
+.copy{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer;font-family:var(--sans)}
+.fine{font-size:12.5px;line-height:1.7;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:10px}
+.fine strong{color:var(--ink)}
+.fine a{color:var(--muted)}
+.src{margin:0;padding-left:1.1em}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header class="mast">
+    <div class="avatar"><img src="data:image/jpeg;base64,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" alt="阿維"></div>
+    <div class="mast-text">
+      <div class="brand">阿維每週市場筆記</div>
+      <div class="issue">環球視野 · 基本面為本</div>
+      <div class="issue">第 1 期 · 2026.10.24 · 數據截至 10/23</div>
+    </div>
+  </header>
+
+  <figure class="hero">
+    <canvas id="hero" role="img" aria-label="示意圖：本週市場情緒向下，企業盈利向上"></canvas>
+    <figcaption>示意圖｜價格隨情緒上落，盈利按自己的步伐增長</figcaption>
+  </figure>
+
+  <section class="simple" aria-labelledby="simple-title">
+    <h2 id="simple-title">一分鐘看懂：本週和你有甚麼關係？</h2>
+    <ul class="simple-list">
+      <li><span class="tag">物價</span><span>美國物價一年升了 3.7%，香港升了 1.9%。意思是去年 100 元買到的東西，今年在香港要約 102 元。油價又升到近 6 個月最高，入油、坐車和買東西都可能再貴一點。</span></li>
+      <li><span class="tag">存錢</span><span>大銀行 3 個月定存的年息是 2.4%，只比香港物價升幅多 0.5%。如果利息追不上物價，錢的數目多了，能買到的東西卻可能少了。有些銀行存一年有 3 厘多，存錢前先比較。</span></li>
+      <li><span class="tag">供樓</span><span>美國利率仍然偏高，香港供樓的利息短期內未必會減少。以 500 萬元、供 30 年計，利率每升 0.25%，每月就要多供約 700 元。</span></li>
+      <li><span class="tag">投資</span><span>恒指一星期跌了 4.5%，即是 10 萬元的股票一星期少了約 4,500 元。股價短期會因為大家擔心而上上落落，但美國大公司賺的錢比去年多了近三成。長遠來說，公司賺錢的能力，比一星期的升跌更重要。</span></li>
+    </ul>
+    <p class="simple-more">想知道背後的原因？請繼續往下看。</p>
+  </section>
+
+  <section class="lead">
+    <h1>價格跌了，盈利仍在增長。</h1>
+    <p>本週美股小幅回落，油價升至近 6 個月高位；但美國企業第三季盈利按年增長近三成，基本面仍然穩健。港股跌幅較大，一週回落 4.5%。</p>
+  </section>
+
+  <section class="life" aria-labelledby="life-title">
+    <p class="section-label" id="life-title">先講身邊事</p>
+    <div class="life-grid">
+      <article class="life-card">
+        <h3>定期存款</h3>
+        <p class="big">2.40% → 3.30%</p>
+        <p class="cap">大銀行 3 個月 ｜ 一般客戶 12 個月最高（10 月 9 日）</p>
+        <p>滙豐、恒生、中銀、渣打 3 個月港元定存仍是 2.40%；12 個月一般客戶最高約 3.30%，部分理財客戶可達 3.5%。以 10 萬元計，息率每高 1 厘，一年多收約 1,000 元，到期前值得先比較。</p>
+      </article>
+      <article class="life-card">
+        <h3>香港樓市</h3>
+        <p class="big">157.83</p>
+        <p class="cap">中原城市領先指數（10 月 18 日公佈）</p>
+        <p>8 月樓價按月再升 0.93%，較 2024–25 年低位（約 135）回升約一成七；租金指數仍在歷史高位。供樓方面，1 個月 HIBOR 於 10 月 23 日為 2.78%；美國 9 月加息後，四大銀行最優惠利率維持 5%。</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <p class="section-label">本週數字：先看環球</p>
+    <div class="stats">
+      <div class="stat"><div class="k">標普 500 指數</div><div class="v">7,624</div><div class="d down">▼ 0.5% 按週</div></div>
+      <div class="stat"><div class="k">美國 10 年期債息</div><div class="v">5.00%</div><div class="d flat">▼ 0.08 個百分點</div></div>
+      <div class="stat"><div class="k">布蘭特油價</div><div class="v">$116.72</div><div class="d up">▲ 6.2% 按週</div></div>
+      <div class="stat"><div class="k">恒生指數</div><div class="v">23,093</div><div class="d down">▼ 4.5% 按週</div></div>
+    </div>
+  </section>
+
+  <section class="thermo" aria-labelledby="thermo-title">
+    <div class="thermo-head">
+      <h2 id="thermo-title">基本面溫度計</h2>
+      <p>長線投資看三件事：經濟、企業、估值。</p>
+    </div>
+    <div class="row">
+      <div class="gauge"><span class="name">經濟</span><span class="pill warn">留意</span></div>
+      <p>美國經濟仍在擴張，10 月採購經理指數 <span class="num">57.6</span>。但 9 月新增職位只有 <span class="num">2.9</span> 萬，通脹回升至 <span class="num">3.7%</span>。中國第三季經濟增長 <span class="num">4.5%</span>。香港通脹 <span class="num">1.9%</span>、失業率 <span class="num">3.9%</span>，大致平穩。</p>
+    </div>
+    <div class="row">
+      <div class="gauge"><span class="name">企業</span><span class="pill ok">穩健</span></div>
+      <p>美國第三季業績已公佈約四分之一，<span class="num">83%</span> 公司盈利好過預期。整體盈利按年增長 <span class="num">29.5%</span>，收入增長 <span class="num">12.7%</span>，主要來自能源、科技和通訊行業。</p>
+    </div>
+    <div class="row">
+      <div class="gauge"><span class="name">估值</span><span class="pill warn">合理偏高</span></div>
+      <p>標普 500 市盈率 <span class="num">25.9</span> 倍，略高於長期平均 <span class="num">25.4</span> 倍；以未來 12 個月盈利計為 <span class="num">18.7</span> 倍，低於 5 年平均 <span class="num">19.8</span> 倍。恒指市盈率約 <span class="num">12.2</span> 倍（10 月 1 日），高於長期平均 <span class="num">10.7</span> 倍。</p>
+    </div>
+  </section>
+
+  <section class="mood">
+    <h3>市場情緒（補充）</h3>
+    <p>本週環球情緒偏弱。市場憂慮人工智能投資的資金來源，科技股受壓，韓國股市一度急跌；中東局勢亦推高油價至近 6 個月高位。港股同受拖累，週四單日下跌約 3%。</p>
+  </section>
+
+  <section class="view">
+    <h3>長線投資者的角度</h3>
+    <p>短期價格受情緒影響；長期回報最終取決於企業盈利，以及買入時的估值。本週的情況是：盈利向上，估值大致合理，價格波動主要來自情緒。</p>
+    <p class="section-label" style="margin-bottom:8px">下週留意</p>
+    <ul class="watch">
+      <li><span class="when">10/28</span><span>美國聯儲局議息，期貨市場估計約 9 成機會維持 3.75%–4.00%。</span></li>
+      <li><span class="when">10/28–29</span><span>Microsoft、Alphabet、Amazon 公佈第三季業績，留意科技盈利能否持續。</span></li>
+      <li><span class="when">10/29</span><span>美國公佈第三季經濟增長初值及 9 月 PCE 通脹。</span></li>
+    </ul>
+  </section>
+
+  <section class="cta">
+    <h3>想了解這些變化和你的財務規劃有甚麼關係？</h3>
+    <p>歡迎直接 WhatsApp 我，約 15 分鐘傾一傾。</p>
+    <div class="cta-actions">
+      <a class="btn" id="wa-btn" href="#" target="_blank" rel="noopener">WhatsApp 我</a>
+      <span class="phone" id="wa-num"></span>
+      <button class="copy" id="copy-btn" type="button">複製號碼</button>
+    </div>
+    <div class="cta-actions">
+      <a class="btn ghost" href="https://www.instagram.com/ahwai.hk/" target="_blank" rel="noopener">Instagram @ahwai.hk</a>
+    </div>
+  </section>
+
+  <footer class="fine">
+    <div><strong>阿維</strong>｜財富管理顧問　WhatsApp +852 6689 0491　IG <a href="https://www.instagram.com/ahwai.hk/" target="_blank" rel="noopener">@ahwai.hk</a></div>
+    <div><strong>【免責聲明】</strong>任何內容只作參考，並不構成任何投資建議。此網站只作知識及學術分享，絕對不會含應否買入或賣出某股票、何時出貨入貨、或按某些情況出貨入貨。於任何情況下，本人絕對不會提供任何投資建議或邀約或任何服務。</div>
+    <div>
+      資料來源：
+      <ol class="src">
+        <li>指數收市：<a href="https://www.lanacion.com.ar/usa/how-major-us-stock-indexes-fared-friday-10232026-nid23102026/" target="_blank" rel="noopener">美聯社（標普 500，10/23）</a>、<a href="http://www.xinhuanet.com/fortune/20261023/c875aed0d2c34f6e92b781e25499ff58/c.html" target="_blank" rel="noopener">新華社（恒指，10/23）</a></li>
+        <li>債息：<a href="https://www.mortgagenewsdaily.com/treasury/10yr" target="_blank" rel="noopener">Mortgage News Daily</a>、<a href="https://geo.multpl.com/10-year-treasury-rate" target="_blank" rel="noopener">multpl</a>（兩者一致）</li>
+        <li>油價：<a href="https://finance.yahoo.com/markets/articles/tech-selloff-relents-oil-five-103308077.html" target="_blank" rel="noopener">美聯社／Yahoo Finance（布蘭特結算，10/23）</a></li>
+        <li>企業盈利及估值：<a href="https://insight.factset.com/sp-500-earnings-season-update-october-23-2026" target="_blank" rel="noopener">FactSet（10/23）</a>、<a href="https://www.gurufocus.com/economic_indicators/57/sp-500-pe-ratio" target="_blank" rel="noopener">GuruFocus</a></li>
+        <li>美國經濟：<a href="https://www.bls.gov/news.release/archives/cpi_10142026.htm" target="_blank" rel="noopener">美國勞工統計局（通脹）</a>、<a href="https://www.bls.gov/news.release/archives/empsit_10022026.htm" target="_blank" rel="noopener">（就業）</a>、<a href="https://www.pmi.spglobal.com/Public/Home/PressRelease/07d16568e63346999890940d47639cd9" target="_blank" rel="noopener">S&amp;P Global（採購經理指數）</a></li>
+        <li>中國及香港：<a href="https://www.aljazeera.com/economy/2026/10/19/chinas-economy-grows-4-5-percent-in-q3-beating-forecasts" target="_blank" rel="noopener">中國第三季經濟增長</a>、<a href="https://news.tvb.com/tc/1202174-9%E6%9C%88%E6%B6%88%E8%B2%BB%E7%89%A9%E5%83%B9%E6%8C%87%E6%95%B8%E6%8C%89%E5%B9%B4%E5%8D%8719%E5%9F%BA%E6%9C%AC%E9%80%9A%E8%84%B9%E7%8E%8721" target="_blank" rel="noopener">香港 9 月通脹</a>、<a href="https://www.hkcd.com/hkcdweb/content/2026/10/22/content_8781286.html" target="_blank" rel="noopener">香港失業率</a></li>
+        <li>定存、樓市、息口：<a href="https://www.moneyhk101.com/hkd-fixed-deposit/" target="_blank" rel="noopener">港元定存比較（10/9）</a>、<a href="https://hk.centanet.com/CCI/CCI" target="_blank" rel="noopener">中原城市領先指數</a>、<a href="https://www.hkma.gov.hk/eng/data-publications-and-research/data-and-statistics/daily-monetary-statistics/" target="_blank" rel="noopener">金管局（HIBOR）</a>、<a href="https://hk.on.cc/hk/bkn/cnt/finance/20260917/bkn-20260917121106374-0917_00842_001.html" target="_blank" rel="noopener">最優惠利率</a></li>
+        <li>聯儲局及下週日程：<a href="https://tradingkey.com/analysis/stocks/us-stocks/262237761-weekly-fed-microsoft-alphabet-amazon-earnings-tradingkey" target="_blank" rel="noopener">TradingKey（引用 CME FedWatch，10/22）</a></li>
+      </ol>
+    </div>
+  </footer>
+</div>
+
+<script>
+// 將 WA_NUMBER 換成你的號碼（國家碼＋號碼，只用數字），例如 "85291234567"
+const WA_NUMBER = "85266890491";
+const WA_TEXT = "你好阿維，我看了你的每週市場筆記，想約你傾一傾。";
+const btn = document.getElementById("wa-btn");
+const num = document.getElementById("wa-num");
+const copyBtn = document.getElementById("copy-btn");
+if (WA_NUMBER) {
+  btn.href = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(WA_TEXT);
+  num.textContent = "+" + WA_NUMBER.slice(0,3) + " " + WA_NUMBER.slice(3,7) + " " + WA_NUMBER.slice(7);
+} else {
+  btn.href = "https://wa.me/";
+  num.textContent = "+852 ____ ____";
+}
+// Hero illustration: stormy sky, a jagged falling "sentiment" line and a steady rising "earnings" line.
+(function drawHero(){
+  const cv = document.getElementById("hero");
+  if (!cv) return;
+  let seed = 7;
+  const rnd = function(){ seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+  function paint(){
+    seed = 7;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = cv.clientWidth || 600, h = Math.round(w * 9 / 16);
+    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+    const g = cv.getContext("2d"); g.setTransform(dpr,0,0,dpr,0,0);
+    // sky
+    const sky = g.createLinearGradient(0,0,0,h);
+    sky.addColorStop(0,"#0B2124"); sky.addColorStop(.6,"#163D40"); sky.addColorStop(1,"#21504F");
+    g.fillStyle = sky; g.fillRect(0,0,w,h);
+    // clouds
+    for (let i=0;i<9;i++){
+      const cx = rnd()*w, cy = rnd()*h*0.35, r = (0.12+rnd()*0.18)*w;
+      const cg = g.createRadialGradient(cx,cy,0,cx,cy,r);
+      cg.addColorStop(0,"rgba(190,210,210,0.16)"); cg.addColorStop(1,"rgba(190,210,210,0)");
+      g.fillStyle = cg; g.beginPath(); g.ellipse(cx,cy,r,r*0.45,0,0,Math.PI*2); g.fill();
+    }
+    // rain
+    g.strokeStyle = "rgba(200,225,225,0.13)"; g.lineWidth = 1;
+    for (let i=0;i<70;i++){ const x=rnd()*w, y=rnd()*h, l=8+rnd()*14; g.beginPath(); g.moveTo(x,y); g.lineTo(x-l*0.25,y+l); g.stroke(); }
+    // grid
+    g.strokeStyle = "rgba(220,240,238,0.08)";
+    for (let i=1;i<5;i++){ const y=h*i/5; g.beginPath(); g.moveTo(0,y); g.lineTo(w,y); g.stroke(); }
+    const pad = w*0.06, x0 = pad, x1 = w - pad*2.6;
+    // earnings: steady rise with soft fill
+    const ePts = []; const n = 40;
+    for (let i=0;i<=n;i++){ const t=i/n; ePts.push([x0+(x1-x0)*t, h*(0.78 - 0.42*t) + Math.sin(t*9)*h*0.008]); }
+    const fill = g.createLinearGradient(0,h*0.3,0,h);
+    fill.addColorStop(0,"rgba(142,223,168,0.32)"); fill.addColorStop(1,"rgba(142,223,168,0)");
+    g.beginPath(); g.moveTo(ePts[0][0],h); ePts.forEach(p=>g.lineTo(p[0],p[1])); g.lineTo(ePts[n][0],h); g.closePath(); g.fillStyle=fill; g.fill();
+    g.beginPath(); ePts.forEach((p,i)=> i?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1])); g.strokeStyle="#8EDFA8"; g.lineWidth=Math.max(2.5,w*0.006); g.lineJoin="round"; g.stroke();
+    // sentiment: jagged decline in the final stretch
+    const sPts = []; const m = 60; let y = h*0.42;
+    for (let i=0;i<=m;i++){ const t=i/m; const drift = t<0.55 ? -0.002 : 0.012; y += h*(drift + (rnd()-0.5)*0.05); y=Math.max(h*0.2,Math.min(h*0.88,y)); sPts.push([x0+(x1-x0)*t,y]); }
+    g.beginPath(); sPts.forEach((p,i)=> i?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1])); g.strokeStyle="#F2876F"; g.lineWidth=Math.max(2,w*0.0045); g.stroke();
+    // end markers + labels
+    const fs = Math.max(13, w*0.032);
+    g.font = "700 "+fs+"px 'Noto Sans TC','PingFang TC',sans-serif"; g.textBaseline="middle";
+    const ee = ePts[n], se = sPts[m];
+    [[ee,"#8EDFA8","盈利 ▲"],[se,"#F2876F","情緒 ▼"]].forEach(function(a){
+      g.fillStyle=a[1]; g.beginPath(); g.arc(a[0][0],a[0][1],Math.max(4,w*0.009),0,Math.PI*2); g.fill();
+      g.fillText(a[2], a[0][0]+w*0.022, a[0][1]);
+    });
+  }
+  paint();
+  let t; window.addEventListener("resize", function(){ clearTimeout(t); t=setTimeout(paint,120); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(paint);
+})();
+
+copyBtn.addEventListener("click", function () {
+  const text = num.textContent;
+  const done = function () { copyBtn.textContent = "已複製"; setTimeout(function(){ copyBtn.textContent = "複製號碼"; }, 1800); };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(function () {
+      const r = document.createRange(); r.selectNodeContents(num);
+      const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    });
+  } else {
+    const r = document.createRange(); r.selectNodeContents(num);
+    const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+});
+</script>
+
+</body>
+</html>
