@@ -16,11 +16,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
 <style>
-/* Layout: one narrow reading column, like a printed client letter; a banded masthead, three figures, then the fundamentals "thermometer" as the centrepiece. */
+/* Layout: one narrow reading column, like a printed client letter, with infographic touches: icon chips, bars, gauges and a gently animated hero. */
 :root{
   --bg:#F3F5F4; --paper:#FFFFFF; --ink:#16211F; --muted:#5B6866; --line:#DCE3E1;
   --accent:#0E5A52; --accent-soft:#E2EEEB;
   --ok:#2F7A4C; --ok-soft:#E3F1E8; --warn:#A86B00; --warn-soft:#FBF0D9; --bad:#A63A32; --bad-soft:#F7E3E1;
+  --track:#E7ECEA;
   --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
   --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
@@ -29,75 +30,129 @@
   --bg:#0F1615; --paper:#162120; --ink:#E6ECEA; --muted:#9AA9A6; --line:#2A3735;
   --accent:#6CC3B6; --accent-soft:#1D312E;
   --ok:#7FCB98; --ok-soft:#1B2E23; --warn:#E6B65A; --warn-soft:#33291A; --bad:#EE8F86; --bad-soft:#3A2220;
+  --track:#24312F;
   color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0F1615; --paper:#162120; --ink:#E6ECEA; --muted:#9AA9A6; --line:#2A3735;
   --accent:#6CC3B6; --accent-soft:#1D312E;
   --ok:#7FCB98; --ok-soft:#1B2E23; --warn:#E6B65A; --warn-soft:#33291A; --bad:#EE8F86; --bad-soft:#3A2220;
+  --track:#24312F;
   color-scheme:dark}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
-.wrap{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px;display:flex;flex-direction:column;gap:20px}
+.wrap{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px;display:flex;flex-direction:column;gap:22px}
+svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* masthead */
 .mast{display:flex;align-items:center;gap:14px;padding-bottom:16px;border-bottom:1px solid var(--line)}
-.avatar{width:44px;height:44px;border-radius:50%;background:var(--accent);color:var(--paper);display:grid;place-items:center;font-family:var(--serif);font-size:20px;flex:none;overflow:hidden}
-.life-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-@media (max-width:520px){.life-grid{grid-template-columns:1fr}}
-.life-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:2px;min-width:0}
-.life-card h3{font-family:var(--serif);font-size:18px;margin:0}
-.life-card .big{font-family:var(--mono);font-size:22px;font-weight:600;margin:6px 0 0;font-variant-numeric:tabular-nums;line-height:1.4}
-.life-card .cap{font-size:12.5px;color:var(--muted);margin:0 0 8px;line-height:1.5}
-.life-card p{margin:0}
-.up{color:var(--warn)}
-.avatar img{width:100%;height:100%;object-fit:cover}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--accent);flex:none;overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
 .mast-text{min-width:0}
 .brand{font-family:var(--serif);font-weight:700;font-size:19px;letter-spacing:.02em;line-height:1.3}
 .issue{font-size:13px;color:var(--muted);letter-spacing:.04em}
+
+/* hero */
 .hero{margin:0;display:flex;flex-direction:column;gap:6px}
 .hero canvas{display:block;width:100%;max-width:100%;aspect-ratio:16/9;border-radius:14px;background:#10292C}
 .hero figcaption{font-size:12.5px;color:var(--muted);letter-spacing:.03em}
-.btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent);padding:9.5px 18px}
-.simple{background:var(--accent-soft);border-radius:14px;padding:18px 16px;display:flex;flex-direction:column;gap:12px}
-.simple h2{font-family:var(--serif);font-size:20px;line-height:1.4;margin:0;text-wrap:balance}
-.simple-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
-.simple-list li{display:grid;grid-template-columns:76px 1fr;gap:10px;align-items:start}
-.simple-list li span:last-child{min-width:0;font-size:17px;line-height:1.7}
-.tag{justify-self:start;font-size:13px;font-weight:700;color:var(--paper);background:var(--accent);border-radius:999px;padding:3px 10px;white-space:nowrap;margin-top:3px}
-.simple-more{margin:0;font-size:14px;color:var(--accent);font-weight:700}
+
+/* one-minute summary */
+.simple{background:var(--accent-soft);border-radius:16px;padding:18px 14px;display:flex;flex-direction:column;gap:12px}
+.simple h2{font-family:var(--serif);font-size:20px;line-height:1.4;margin:0 2px;text-wrap:balance}
+.simple-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.simple-list li{background:var(--paper);border-radius:12px;padding:14px;display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px 12px;align-items:center}
+.simple-list li > div{display:contents}
+.ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#fff}
+.ico.c1{background:#C8642F} .ico.c2{background:#2F7A4C} .ico.c3{background:#3D5A99} .ico.c4{background:#0E5A52}
+.simple-list .head{display:flex;align-items:center;justify-content:space-between;gap:6px 8px;flex-wrap:wrap;min-width:0}
+.simple-list .tag{font-weight:700;font-size:16px}
+.chip{font-family:var(--sans);font-size:13px;font-weight:600;border-radius:999px;padding:2px 10px;background:var(--accent-soft);color:var(--accent);white-space:nowrap;font-variant-numeric:tabular-nums}
+.chip.warn{background:var(--warn-soft);color:var(--warn)} .chip.bad{background:var(--bad-soft);color:var(--bad)}
+.simple-list p{grid-column:1 / -1;margin:0;font-size:16.5px;line-height:1.75}
+.simple-more{margin:0 2px;font-size:14px;color:var(--accent);font-weight:700;display:flex;align-items:center;gap:6px}
+.simple-more svg{width:18px;height:18px;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+
+/* lead */
 .lead h1{font-family:var(--serif);font-weight:700;font-size:clamp(26px,7vw,34px);line-height:1.3;margin:0 0 10px;text-wrap:balance}
 .lead p{margin:0;color:var(--muted)}
 .section-label{font-size:12px;letter-spacing:.14em;color:var(--accent);font-weight:700;margin:0 0 10px}
+
+/* life cards */
+.life-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:520px){.life-grid{grid-template-columns:1fr}}
+.life-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.life-card .top{display:flex;align-items:center;gap:10px}
+.life-card .top .ico{width:40px;height:40px;border-radius:11px}
+.life-card h3{font-family:var(--serif);font-size:18px;margin:0}
+.life-card .cap{font-size:12.5px;color:var(--muted);margin:0;line-height:1.5}
+.life-card p{margin:0}
+.bars{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+.bars li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;font-size:13.5px;align-items:baseline}
+.bars .val{font-family:var(--mono);font-weight:600;font-variant-numeric:tabular-nums}
+.bars .track{grid-column:1 / -1;height:10px;border-radius:999px;background:var(--track);overflow:hidden}
+.bars .fill{display:block;height:100%;width:var(--w);border-radius:999px;background:var(--accent);transform-origin:left;transition:transform 1.1s cubic-bezier(.2,.8,.2,1)}
+.bars .fill.alt{background:#C8642F} .bars .fill.soft{background:var(--muted);opacity:.55}
+
+/* stats */
 .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.stat{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;min-width:0}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 10px;align-items:center}
+.stat .ico{width:34px;height:34px;border-radius:10px;background:var(--accent-soft);color:var(--accent);grid-row:span 2}
+.stat .ico svg{width:20px;height:20px}
 .stat .k{font-size:13px;color:var(--muted);line-height:1.4}
-.stat .v{font-family:var(--mono);font-weight:600;font-size:clamp(17px,4.6vw,22px);font-variant-numeric:tabular-nums;line-height:1.4;margin-top:4px}
-.stat .d{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums}
-.down{color:var(--bad)} .flat{color:var(--muted)}
-@media (max-width:420px){.stats{grid-template-columns:1fr}.stat{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap}.stat .v{margin-top:0}}
-.thermo{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.stat .v{font-family:var(--mono);font-weight:600;font-size:clamp(18px,4.8vw,22px);font-variant-numeric:tabular-nums;line-height:1.3}
+.stat .d{grid-column:1 / -1;font-family:var(--sans);font-size:13px;font-variant-numeric:tabular-nums;display:inline-flex;align-items:center;gap:6px;justify-self:start;border-radius:999px;padding:1px 10px}
+.d.down{color:var(--bad);background:var(--bad-soft)} .d.up{color:var(--warn);background:var(--warn-soft)} .d.flat{color:var(--muted);background:var(--track)}
+@media (max-width:360px){.stats{grid-template-columns:1fr}}
+
+/* thermometer with gauges */
+.thermo{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .thermo-head{padding:16px 16px 4px}
 .thermo-head h2{font-family:var(--serif);font-size:21px;margin:0}
 .thermo-head p{margin:2px 0 0;font-size:14px;color:var(--muted)}
-.row{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:16px;border-top:1px solid var(--line)}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:6px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:10px;height:10px;border-radius:50%;display:inline-block}
+.row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:12px;padding:16px;border-top:1px solid var(--line)}
 .row:first-of-type{border-top:0}
-.gauge{display:flex;flex-direction:column;align-items:center;gap:6px}
-.gauge .name{font-family:var(--serif);font-weight:700;font-size:17px}
+.gauge{display:flex;flex-direction:column;align-items:center;gap:4px}
+.gauge svg{width:92px;height:56px;overflow:visible}
+.gauge .seg{fill:none;stroke-width:9;stroke-linecap:butt}
+.gauge .needle{transform-box:view-box;transform-origin:60px 60px;transform:rotate(-90deg);transition:transform 1.3s cubic-bezier(.3,1.35,.5,1)}
+.gauge.in .needle{transform:rotate(var(--a))}
+.gauge .name{font-family:var(--serif);font-weight:700;font-size:17px;line-height:1.2}
 .pill{font-size:12px;font-weight:700;border-radius:999px;padding:2px 10px;white-space:nowrap;display:inline-flex;align-items:center;gap:5px}
 .pill::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
-.pill.ok{color:var(--ok);background:var(--ok-soft)} .pill.warn{color:var(--warn);background:var(--warn-soft)}
+.pill.ok{color:var(--ok);background:var(--ok-soft)} .pill.warn{color:var(--warn);background:var(--warn-soft)} .pill.bad{color:var(--bad);background:var(--bad-soft)}
 .row p{margin:0;min-width:0}
 .num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:500}
-.mood{border-left:3px solid var(--warn);padding:2px 0 2px 14px}
+
+/* mood */
+.mood{display:grid;grid-template-columns:56px minmax(0,1fr);gap:14px;align-items:start;background:var(--warn-soft);border-radius:14px;padding:16px}
+.mood .wx{width:56px;height:56px;color:var(--warn)}
+.mood .wx .drop{animation:rain 1.4s linear infinite}
+.mood .wx .drop:nth-of-type(2){animation-delay:.45s} .mood .wx .drop:nth-of-type(3){animation-delay:.9s}
+@keyframes rain{0%{transform:translateY(-3px);opacity:0}30%{opacity:1}100%{transform:translateY(6px);opacity:0}}
 .mood h3,.view h3{font-family:var(--serif);font-size:18px;margin:0 0 4px}
 .mood p{margin:0;color:var(--ink)}
-.view{background:var(--accent-soft);border-radius:12px;padding:18px 16px}
+
+/* view + calendar tiles */
+.view{background:var(--accent-soft);border-radius:14px;padding:18px 16px}
 .view p{margin:0 0 12px}
-.watch{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
-.watch li{display:grid;grid-template-columns:76px 1fr;gap:10px}
-.watch .when{font-family:var(--mono);font-size:14px;color:var(--accent);font-weight:600}
-.cta{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 16px;display:flex;flex-direction:column;gap:12px}
+.watch{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.watch li{display:grid;grid-template-columns:62px minmax(0,1fr);gap:12px;align-items:center;background:var(--paper);border-radius:12px;padding:10px}
+.cal{border-radius:9px;overflow:hidden;border:1px solid var(--line);text-align:center;background:var(--paper);line-height:1.2}
+.cal .m{display:block;background:var(--accent);color:var(--paper);font-size:11px;font-weight:700;padding:2px 0;letter-spacing:.06em}
+.cal .dd{display:block;font-family:var(--mono);font-weight:600;font-size:16px;padding:5px 0 4px;font-variant-numeric:tabular-nums}
+
+/* contact */
+.cta{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 16px;display:flex;flex-direction:column;gap:12px}
 .cta h3{font-family:var(--serif);font-size:19px;margin:0}
 .cta p{margin:0;color:var(--muted)}
 .cta-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--paper);text-decoration:none;font-weight:700;border-radius:999px;padding:11px 20px;border:0;font-size:16px;font-family:var(--sans);cursor:pointer}
+.btn svg{width:20px;height:20px}
+.btn.wa{background:#1F8F55;color:#fff}
+.btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent);padding:9.5px 18px}
 .btn:focus-visible,.copy:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
 .phone{font-family:var(--mono);font-size:15px;user-select:all}
 .copy{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer;font-family:var(--sans)}
@@ -105,10 +160,35 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16p
 .fine strong{color:var(--ink)}
 .fine a{color:var(--muted)}
 .src{margin:0;padding-left:1.1em}
+
+/* scroll reveal: only armed by script, so the page reads fine without it */
+.js-anim .rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.js-anim .rv.in{opacity:1;transform:none}
+.js-anim .bars .fill{transform:scaleX(0)}
+.js-anim .in .bars .fill,.js-anim .bars.in .fill{transform:scaleX(1)}
+@media (prefers-reduced-motion: reduce){
+  .js-anim .rv{opacity:1;transform:none;transition:none}
+  .js-anim .bars .fill{transform:none;transition:none}
+  .gauge .needle{transition:none}
+  .simple-more svg,.mood .wx .drop{animation:none}
+}
 </style>
 </head>
 <body>
-
+<!-- Icon sprite: line icons drawn for this page, coloured with currentColor. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5.5 8h13l-1 12.5h-11z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/><path d="M9.5 12.5h5"/></symbol>
+  <symbol id="i-coins" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="2.8"/><path d="M5 6v4c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8V6"/><path d="M5 10v4c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-4"/><path d="M5 14v4c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-4"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3.5 3.5v17h17"/><path d="m7 15 4-4.5 3 3 5.5-6"/><path d="M15.5 7.5h4v4"/></symbol>
+  <symbol id="i-bars" viewBox="0 0 24 24"><path d="M6 20v-8"/><path d="M12 20V5"/><path d="M18 20v-11"/><path d="M3.5 20.5h17"/></symbol>
+  <symbol id="i-pct" viewBox="0 0 24 24"><path d="M18.5 5.5l-13 13"/><circle cx="7" cy="7" r="2.3"/><circle cx="17" cy="17" r="2.3"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3.5s6 6.6 6 10.8a6 6 0 0 1-12 0C6 10.1 12 3.5 12 3.5z"/><path d="M9.3 15a2.8 2.8 0 0 0 2.7 2.4"/></symbol>
+  <symbol id="i-city" viewBox="0 0 24 24"><path d="M3 20.5h18"/><path d="M5 20.5V9l5-2.5v14"/><path d="M10 20.5V11h8.5v9.5"/><path d="M13 14h2.5M13 17h2.5M7 11.5h1M7 14.5h1"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5"/><path d="m6 11 6-6 6 6"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4.5 19.5l1.2-3.7A8 8 0 1 1 8.6 18.6z"/><path d="M9 10.5c.3 1.8 2 3.6 4 4"/></symbol>
+</svg>
 
 <div class="wrap">
   <header class="mast">
@@ -121,22 +201,46 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16p
   </header>
 
   <figure class="hero">
-    <canvas id="hero" role="img" aria-label="示意圖：本週市場情緒向下，企業盈利向上"></canvas>
+    <canvas id="hero" role="img" aria-label="示意圖：本週市場情緒向下，企業盈利向上" data-weather="rain"></canvas>
     <figcaption>示意圖｜價格隨情緒上落，盈利按自己的步伐增長</figcaption>
   </figure>
 
   <section class="simple" aria-labelledby="simple-title">
     <h2 id="simple-title">一分鐘看懂：本週和你有甚麼關係？</h2>
     <ul class="simple-list">
-      <li><span class="tag">物價</span><span>美國物價一年升了 3.7%，香港升了 1.9%。意思是去年 100 元買到的東西，今年在香港要約 102 元。油價又升到近 6 個月最高，入油、坐車和買東西都可能再貴一點。</span></li>
-      <li><span class="tag">存錢</span><span>大銀行 3 個月定存的年息是 2.4%，只比香港物價升幅多 0.5%。如果利息追不上物價，錢的數目多了，能買到的東西卻可能少了。有些銀行存一年有 3 厘多，存錢前先比較。</span></li>
-      <li><span class="tag">供樓</span><span>美國利率仍然偏高，香港供樓的利息短期內未必會減少。以 500 萬元、供 30 年計，利率每升 0.25%，每月就要多供約 700 元。</span></li>
-      <li><span class="tag">投資</span><span>恒指一星期跌了 4.5%，即是 10 萬元的股票一星期少了約 4,500 元。股價短期會因為大家擔心而上上落落，但美國大公司賺的錢比去年多了近三成。長遠來說，公司賺錢的能力，比一星期的升跌更重要。</span></li>
+      <li class="rv">
+        <span class="ico c1"><svg class="i"><use href="#i-bag"/></svg></span>
+        <div>
+          <div class="head"><span class="tag">物價</span><span class="chip warn">100 元 → 約 102 元</span></div>
+          <p>美國物價一年升了 3.7%，香港升了 1.9%。意思是去年 100 元買到的東西，今年在香港要約 102 元。油價又升到近 6 個月最高，入油、坐車和買東西都可能再貴一點。</p>
+        </div>
+      </li>
+      <li class="rv">
+        <span class="ico c2"><svg class="i"><use href="#i-coins"/></svg></span>
+        <div>
+          <div class="head"><span class="tag">存錢</span><span class="chip">定存 2.4% ｜ 物價 1.9%</span></div>
+          <p>大銀行 3 個月定存的年息是 2.4%，只比香港物價升幅多 0.5%。如果利息追不上物價，錢的數目多了，能買到的東西卻可能少了。有些銀行存一年有 3 厘多，存錢前先比較。</p>
+        </div>
+      </li>
+      <li class="rv">
+        <span class="ico c3"><svg class="i"><use href="#i-home"/></svg></span>
+        <div>
+          <div class="head"><span class="tag">供樓</span><span class="chip warn">每月多供約 700 元</span></div>
+          <p>美國利率仍然偏高，香港供樓的利息短期內未必會減少。以 500 萬元、供 30 年計，利率每升 0.25%，每月就要多供約 700 元。</p>
+        </div>
+      </li>
+      <li class="rv">
+        <span class="ico c4"><svg class="i"><use href="#i-trend"/></svg></span>
+        <div>
+          <div class="head"><span class="tag">投資</span><span class="chip bad">10 萬 → 約 9.55 萬</span></div>
+          <p>恒指一星期跌了 4.5%，即是 10 萬元的股票一星期少了約 4,500 元。股價短期會因為大家擔心而上上落落，但美國大公司賺的錢比去年多了近三成。長遠來說，公司賺錢的能力，比一星期的升跌更重要。</p>
+        </div>
+      </li>
     </ul>
-    <p class="simple-more">想知道背後的原因？請繼續往下看。</p>
+    <p class="simple-more">想知道背後的原因？請繼續往下看。<svg class="i"><use href="#i-down"/></svg></p>
   </section>
 
-  <section class="lead">
+  <section class="lead rv">
     <h1>價格跌了，盈利仍在增長。</h1>
     <p>本週美股小幅回落，油價升至近 6 個月高位；但美國企業第三季盈利按年增長近三成，基本面仍然穩健。港股跌幅較大，一週回落 4.5%。</p>
   </section>
@@ -144,17 +248,24 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16p
   <section class="life" aria-labelledby="life-title">
     <p class="section-label" id="life-title">先講身邊事</p>
     <div class="life-grid">
-      <article class="life-card">
-        <h3>定期存款</h3>
-        <p class="big">2.40% → 3.30%</p>
-        <p class="cap">大銀行 3 個月 ｜ 一般客戶 12 個月最高（10 月 9 日）</p>
+      <article class="life-card rv">
+        <div class="top"><span class="ico c2"><svg class="i"><use href="#i-coins"/></svg></span><h3>定期存款</h3></div>
+        <ul class="bars" aria-label="港元定存息率與香港通脹比較">
+          <li><span>大銀行 3 個月</span><span class="val">2.40%</span><span class="track"><span class="fill" style="--w:60%"></span></span></li>
+          <li><span>12 個月一般客戶最高</span><span class="val">3.30%</span><span class="track"><span class="fill" style="--w:82.5%"></span></span></li>
+          <li><span>香港物價升幅（9 月）</span><span class="val">1.9%</span><span class="track"><span class="fill alt" style="--w:47.5%"></span></span></li>
+        </ul>
+        <p class="cap">定存息率截至 10 月 9 日；橫條以 4% 為滿格</p>
         <p>滙豐、恒生、中銀、渣打 3 個月港元定存仍是 2.40%；12 個月一般客戶最高約 3.30%，部分理財客戶可達 3.5%。以 10 萬元計，息率每高 1 厘，一年多收約 1,000 元，到期前值得先比較。</p>
       </article>
-      <article class="life-card">
-        <h3>香港樓市</h3>
-        <p class="big">157.83</p>
-        <p class="cap">中原城市領先指數（10 月 18 日公佈）</p>
-        <p>8 月樓價按月再升 0.93%，較 2024–25 年低位（約 135）回升約一成七；租金指數仍在歷史高位。供樓方面，1 個月 HIBOR 於 10 月 23 日為 2.78%；美國 9 月加息後，四大銀行最優惠利率維持 5%。</p>
+      <article class="life-card rv">
+        <div class="top"><span class="ico c3"><svg class="i"><use href="#i-city"/></svg></span><h3>香港樓市</h3></div>
+        <ul class="bars" aria-label="中原城市領先指數：低位與最新">
+          <li><span>2024–25 年低位</span><span class="val">約 135</span><span class="track"><span class="fill soft" style="--w:75%"></span></span></li>
+          <li><span>最新（8 月）</span><span class="val">157.83</span><span class="track"><span class="fill" style="--w:87.7%"></span></span></li>
+        </ul>
+        <p class="cap">中原城市領先指數（10 月 18 日公佈）；橫條以 180 為滿格</p>
+        <p>8 月樓價按月再升 0.93%，較低位回升約一成七；租金指數仍在歷史高位。供樓方面，1 個月 HIBOR 於 10 月 23 日為 2.78%；美國 9 月加息後，四大銀行最優惠利率維持 5%。</p>
       </article>
     </div>
   </section>
@@ -162,10 +273,10 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16p
   <section>
     <p class="section-label">本週數字：先看環球</p>
     <div class="stats">
-      <div class="stat"><div class="k">標普 500 指數</div><div class="v">7,624</div><div class="d down">▼ 0.5% 按週</div></div>
-      <div class="stat"><div class="k">美國 10 年期債息</div><div class="v">5.00%</div><div class="d flat">▼ 0.08 個百分點</div></div>
-      <div class="stat"><div class="k">布蘭特油價</div><div class="v">$116.72</div><div class="d up">▲ 6.2% 按週</div></div>
-      <div class="stat"><div class="k">恒生指數</div><div class="v">23,093</div><div class="d down">▼ 4.5% 按週</div></div>
+      <div class="stat rv"><span class="ico"><svg class="i"><use href="#i-bars"/></svg></span><div class="k">標普 500 指數</div><div class="v" data-count="7624" data-dec="0">7,624</div><div class="d down"><svg class="i" style="width:14px;height:14px"><use href="#i-down"/></svg>0.5% 按週</div></div>
+      <div class="stat rv"><span class="ico"><svg class="i"><use href="#i-pct"/></svg></span><div class="k">美國 10 年期債息</div><div class="v" data-count="5.00" data-dec="2" data-suffix="%">5.00%</div><div class="d flat"><svg class="i" style="width:14px;height:14px"><use href="#i-down"/></svg>0.08 個百分點</div></div>
+      <div class="stat rv"><span class="ico"><svg class="i"><use href="#i-drop"/></svg></span><div class="k">布蘭特油價</div><div class="v" data-count="116.72" data-dec="2" data-prefix="$">$116.72</div><div class="d up"><svg class="i" style="width:14px;height:14px"><use href="#i-up"/></svg>6.2% 按週</div></div>
+      <div class="stat rv"><span class="ico"><svg class="i"><use href="#i-city"/></svg></span><div class="k">恒生指數</div><div class="v" data-count="23093" data-dec="0">23,093</div><div class="d down"><svg class="i" style="width:14px;height:14px"><use href="#i-down"/></svg>4.5% 按週</div></div>
     </div>
   </section>
 
@@ -173,42 +284,49 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16p
     <div class="thermo-head">
       <h2 id="thermo-title">基本面溫度計</h2>
       <p>長線投資看三件事：經濟、企業、估值。</p>
+      <div class="legend" aria-hidden="true"><span><i style="background:var(--ok)"></i>穩健</span><span><i style="background:var(--warn)"></i>留意</span><span><i style="background:var(--bad)"></i>警示</span></div>
     </div>
     <div class="row">
-      <div class="gauge"><span class="name">經濟</span><span class="pill warn">留意</span></div>
+      <div class="gauge" style="--a:0deg"><svg viewBox="0 0 120 66" aria-hidden="true"></svg><span class="name">經濟</span><span class="pill warn">留意</span></div>
       <p>美國經濟仍在擴張，10 月採購經理指數 <span class="num">57.6</span>。但 9 月新增職位只有 <span class="num">2.9</span> 萬，通脹回升至 <span class="num">3.7%</span>。中國第三季經濟增長 <span class="num">4.5%</span>。香港通脹 <span class="num">1.9%</span>、失業率 <span class="num">3.9%</span>，大致平穩。</p>
     </div>
     <div class="row">
-      <div class="gauge"><span class="name">企業</span><span class="pill ok">穩健</span></div>
+      <div class="gauge" style="--a:-58deg"><svg viewBox="0 0 120 66" aria-hidden="true"></svg><span class="name">企業</span><span class="pill ok">穩健</span></div>
       <p>美國第三季業績已公佈約四分之一，<span class="num">83%</span> 公司盈利好過預期。整體盈利按年增長 <span class="num">29.5%</span>，收入增長 <span class="num">12.7%</span>，主要來自能源、科技和通訊行業。</p>
     </div>
     <div class="row">
-      <div class="gauge"><span class="name">估值</span><span class="pill warn">合理偏高</span></div>
+      <div class="gauge" style="--a:22deg"><svg viewBox="0 0 120 66" aria-hidden="true"></svg><span class="name">估值</span><span class="pill warn">合理偏高</span></div>
       <p>標普 500 市盈率 <span class="num">25.9</span> 倍，略高於長期平均 <span class="num">25.4</span> 倍；以未來 12 個月盈利計為 <span class="num">18.7</span> 倍，低於 5 年平均 <span class="num">19.8</span> 倍。恒指市盈率約 <span class="num">12.2</span> 倍（10 月 1 日），高於長期平均 <span class="num">10.7</span> 倍。</p>
     </div>
   </section>
 
-  <section class="mood">
-    <h3>市場情緒（補充）</h3>
-    <p>本週環球情緒偏弱。市場憂慮人工智能投資的資金來源，科技股受壓，韓國股市一度急跌；中東局勢亦推高油價至近 6 個月高位。港股同受拖累，週四單日下跌約 3%。</p>
+  <section class="mood rv">
+    <svg class="wx" viewBox="0 0 56 56" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 34h24a8 8 0 0 0 0-16 11 11 0 0 0-21-2 9 9 0 0 0-3 18z"/>
+      <path class="drop" d="M20 40l-2 5"/><path class="drop" d="M29 40l-2 5"/><path class="drop" d="M38 40l-2 5"/>
+    </svg>
+    <div>
+      <h3>市場情緒（補充）</h3>
+      <p>本週環球情緒偏弱。市場憂慮人工智能投資的資金來源，科技股受壓，韓國股市一度急跌；中東局勢亦推高油價至近 6 個月高位。港股同受拖累，週四單日下跌約 3%。</p>
+    </div>
   </section>
 
-  <section class="view">
+  <section class="view rv">
     <h3>長線投資者的角度</h3>
     <p>短期價格受情緒影響；長期回報最終取決於企業盈利，以及買入時的估值。本週的情況是：盈利向上，估值大致合理，價格波動主要來自情緒。</p>
     <p class="section-label" style="margin-bottom:8px">下週留意</p>
     <ul class="watch">
-      <li><span class="when">10/28</span><span>美國聯儲局議息，期貨市場估計約 9 成機會維持 3.75%–4.00%。</span></li>
-      <li><span class="when">10/28–29</span><span>Microsoft、Alphabet、Amazon 公佈第三季業績，留意科技盈利能否持續。</span></li>
-      <li><span class="when">10/29</span><span>美國公佈第三季經濟增長初值及 9 月 PCE 通脹。</span></li>
+      <li><span class="cal"><span class="m">10 月</span><span class="dd">28</span></span><span>美國聯儲局議息，期貨市場估計約 9 成機會維持 3.75%–4.00%。</span></li>
+      <li><span class="cal"><span class="m">10 月</span><span class="dd">28–29</span></span><span>Microsoft、Alphabet、Amazon 公佈第三季業績，留意科技盈利能否持續。</span></li>
+      <li><span class="cal"><span class="m">10 月</span><span class="dd">29</span></span><span>美國公佈第三季經濟增長初值及 9 月 PCE 通脹。</span></li>
     </ul>
   </section>
 
-  <section class="cta">
+  <section class="cta rv">
     <h3>想了解這些變化和你的財務規劃有甚麼關係？</h3>
     <p>歡迎直接 WhatsApp 我，約 15 分鐘傾一傾。</p>
     <div class="cta-actions">
-      <a class="btn" id="wa-btn" href="#" target="_blank" rel="noopener">WhatsApp 我</a>
+      <a class="btn wa" id="wa-btn" href="#" target="_blank" rel="noopener"><svg class="i"><use href="#i-chat"/></svg>WhatsApp 我</a>
       <span class="phone" id="wa-num"></span>
       <button class="copy" id="copy-btn" type="button">複製號碼</button>
     </div>
@@ -237,88 +355,152 @@ body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16p
 </div>
 
 <script>
-// 將 WA_NUMBER 換成你的號碼（國家碼＋號碼，只用數字），例如 "85291234567"
+// 聯絡資料：國家碼＋號碼，只用數字
 const WA_NUMBER = "85266890491";
 const WA_TEXT = "你好阿維，我看了你的每週市場筆記，想約你傾一傾。";
 const btn = document.getElementById("wa-btn");
 const num = document.getElementById("wa-num");
 const copyBtn = document.getElementById("copy-btn");
-if (WA_NUMBER) {
-  btn.href = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(WA_TEXT);
-  num.textContent = "+" + WA_NUMBER.slice(0,3) + " " + WA_NUMBER.slice(3,7) + " " + WA_NUMBER.slice(7);
-} else {
-  btn.href = "https://wa.me/";
-  num.textContent = "+852 ____ ____";
-}
-// Hero illustration: stormy sky, a jagged falling "sentiment" line and a steady rising "earnings" line.
-(function drawHero(){
-  const cv = document.getElementById("hero");
-  if (!cv) return;
-  let seed = 7;
-  const rnd = function(){ seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
-  function paint(){
-    seed = 7;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const w = cv.clientWidth || 600, h = Math.round(w * 9 / 16);
-    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
-    const g = cv.getContext("2d"); g.setTransform(dpr,0,0,dpr,0,0);
-    // sky
-    const sky = g.createLinearGradient(0,0,0,h);
-    sky.addColorStop(0,"#0B2124"); sky.addColorStop(.6,"#163D40"); sky.addColorStop(1,"#21504F");
-    g.fillStyle = sky; g.fillRect(0,0,w,h);
-    // clouds
-    for (let i=0;i<9;i++){
-      const cx = rnd()*w, cy = rnd()*h*0.35, r = (0.12+rnd()*0.18)*w;
-      const cg = g.createRadialGradient(cx,cy,0,cx,cy,r);
-      cg.addColorStop(0,"rgba(190,210,210,0.16)"); cg.addColorStop(1,"rgba(190,210,210,0)");
-      g.fillStyle = cg; g.beginPath(); g.ellipse(cx,cy,r,r*0.45,0,0,Math.PI*2); g.fill();
-    }
-    // rain
-    g.strokeStyle = "rgba(200,225,225,0.13)"; g.lineWidth = 1;
-    for (let i=0;i<70;i++){ const x=rnd()*w, y=rnd()*h, l=8+rnd()*14; g.beginPath(); g.moveTo(x,y); g.lineTo(x-l*0.25,y+l); g.stroke(); }
-    // grid
-    g.strokeStyle = "rgba(220,240,238,0.08)";
-    for (let i=1;i<5;i++){ const y=h*i/5; g.beginPath(); g.moveTo(0,y); g.lineTo(w,y); g.stroke(); }
-    const pad = w*0.06, x0 = pad, x1 = w - pad*2.6;
-    // earnings: steady rise with soft fill
-    const ePts = []; const n = 40;
-    for (let i=0;i<=n;i++){ const t=i/n; ePts.push([x0+(x1-x0)*t, h*(0.78 - 0.42*t) + Math.sin(t*9)*h*0.008]); }
-    const fill = g.createLinearGradient(0,h*0.3,0,h);
-    fill.addColorStop(0,"rgba(142,223,168,0.32)"); fill.addColorStop(1,"rgba(142,223,168,0)");
-    g.beginPath(); g.moveTo(ePts[0][0],h); ePts.forEach(p=>g.lineTo(p[0],p[1])); g.lineTo(ePts[n][0],h); g.closePath(); g.fillStyle=fill; g.fill();
-    g.beginPath(); ePts.forEach((p,i)=> i?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1])); g.strokeStyle="#8EDFA8"; g.lineWidth=Math.max(2.5,w*0.006); g.lineJoin="round"; g.stroke();
-    // sentiment: jagged decline in the final stretch
-    const sPts = []; const m = 60; let y = h*0.42;
-    for (let i=0;i<=m;i++){ const t=i/m; const drift = t<0.55 ? -0.002 : 0.012; y += h*(drift + (rnd()-0.5)*0.05); y=Math.max(h*0.2,Math.min(h*0.88,y)); sPts.push([x0+(x1-x0)*t,y]); }
-    g.beginPath(); sPts.forEach((p,i)=> i?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1])); g.strokeStyle="#F2876F"; g.lineWidth=Math.max(2,w*0.0045); g.stroke();
-    // end markers + labels
-    const fs = Math.max(13, w*0.032);
-    g.font = "700 "+fs+"px 'Noto Sans TC','PingFang TC',sans-serif"; g.textBaseline="middle";
-    const ee = ePts[n], se = sPts[m];
-    [[ee,"#8EDFA8","盈利 ▲"],[se,"#F2876F","情緒 ▼"]].forEach(function(a){
-      g.fillStyle=a[1]; g.beginPath(); g.arc(a[0][0],a[0][1],Math.max(4,w*0.009),0,Math.PI*2); g.fill();
-      g.fillText(a[2], a[0][0]+w*0.022, a[0][1]);
-    });
-  }
-  paint();
-  let t; window.addEventListener("resize", function(){ clearTimeout(t); t=setTimeout(paint,120); });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(paint);
-})();
-
+btn.href = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(WA_TEXT);
+num.textContent = "+" + WA_NUMBER.slice(0,3) + " " + WA_NUMBER.slice(3,7) + " " + WA_NUMBER.slice(7);
 copyBtn.addEventListener("click", function () {
   const text = num.textContent;
   const done = function () { copyBtn.textContent = "已複製"; setTimeout(function(){ copyBtn.textContent = "複製號碼"; }, 1800); };
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(done).catch(function () {
-      const r = document.createRange(); r.selectNodeContents(num);
-      const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-    });
-  } else {
-    const r = document.createRange(); r.selectNodeContents(num);
-    const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-  }
+  const select = function () { const r = document.createRange(); r.selectNodeContents(num); const s = window.getSelection(); s.removeAllRanges(); s.addRange(r); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done).catch(select); else select();
 });
-</script>
 
+const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Gauges: three-band half dial (穩健 / 留意 / 警示); the needle angle comes from each gauge's --a (-90deg = far left, 90deg = far right).
+(function buildGauges(){
+  const ns = "http://www.w3.org/2000/svg";
+  const css = getComputedStyle(document.documentElement);
+  const cols = ["--ok","--warn","--bad"];
+  const P = function(deg){ const r = deg*Math.PI/180; return [60 + 46*Math.cos(r), 60 - 46*Math.sin(r)]; };
+  document.querySelectorAll(".gauge svg").forEach(function(svg){
+    [[180,121],[119,61],[59,0]].forEach(function(s,i){
+      const a = P(s[0]), b = P(s[1]);
+      const p = document.createElementNS(ns,"path");
+      p.setAttribute("d","M"+a[0].toFixed(2)+" "+a[1].toFixed(2)+" A46 46 0 0 1 "+b[0].toFixed(2)+" "+b[1].toFixed(2));
+      p.setAttribute("class","seg"); p.style.stroke = "var("+cols[i]+")";
+      svg.appendChild(p);
+    });
+    const g = document.createElementNS(ns,"g"); g.setAttribute("class","needle");
+    g.innerHTML = '<path d="M60 60 L57 58 L60 22 L63 58 Z" fill="var(--ink)"/>';
+    svg.appendChild(g);
+    const hub = document.createElementNS(ns,"circle");
+    hub.setAttribute("cx","60"); hub.setAttribute("cy","60"); hub.setAttribute("r","5"); hub.setAttribute("fill","var(--ink)");
+    svg.appendChild(hub);
+  });
+})();
+
+// Count-up for headline numbers; the final value is already in the HTML, so nothing breaks without script.
+function countUp(el){
+  const end = parseFloat(el.dataset.count), dec = +(el.dataset.dec || 0);
+  const pre = el.dataset.prefix || "", suf = el.dataset.suffix || "";
+  const fmt = function(v){ return pre + v.toLocaleString("en-US",{minimumFractionDigits:dec,maximumFractionDigits:dec}) + suf; };
+  const start = end * 0.85, t0 = performance.now(), dur = 1100;
+  (function step(now){
+    const k = Math.min(1,(now - t0)/dur), e = 1 - Math.pow(1-k,3);
+    el.textContent = fmt(start + (end-start)*e);
+    if (k < 1) requestAnimationFrame(step); else el.textContent = fmt(end);
+  })(t0);
+}
+
+// Scroll reveal: arm only when the browser supports it and motion is welcome.
+(function reveal(){
+  const gauges = document.querySelectorAll(".gauge");
+  if (reduceMotion || !("IntersectionObserver" in window)) { gauges.forEach(function(g){ g.classList.add("in"); }); return; }
+  document.documentElement.classList.add("js-anim");
+  const io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      const el = en.target;
+      el.classList.add("in");
+      el.querySelectorAll("[data-count]").forEach(countUp);
+      io.unobserve(el);
+    });
+  }, {threshold:0.15, rootMargin:"0px 0px -5% 0px"});
+  document.querySelectorAll(".rv, .gauge").forEach(function(el){ io.observe(el); });
+  // Safety net: anything still hidden after 4s is shown, e.g. in print or screenshot tools.
+  setTimeout(function(){ document.querySelectorAll(".rv, .gauge").forEach(function(el){ el.classList.add("in"); }); }, 4000);
+})();
+
+// Hero illustration: weather sky, a jagged falling "sentiment" line and a steady rising "earnings" line.
+// The two lines draw in once; the rain keeps falling slowly while the picture is on screen.
+(function hero(){
+  const cv = document.getElementById("hero");
+  if (!cv) return;
+  let seed, w, h, geo, visible = true, raf = null, t0 = null;
+  const rnd = function(){ seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+  function build(){
+    seed = 7;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = cv.clientWidth || 600; h = Math.round(w * 9 / 16);
+    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+    cv.getContext("2d").setTransform(dpr,0,0,dpr,0,0);
+    const clouds = [];
+    for (let i=0;i<9;i++) clouds.push([rnd()*w, rnd()*h*0.35, (0.12+rnd()*0.18)*w]);
+    const drops = [];
+    for (let i=0;i<70;i++) drops.push([rnd()*w, rnd()*h, 8+rnd()*14, 0.6+rnd()*0.8]);
+    const pad = w*0.06, x0 = pad, x1 = w - pad*2.6;
+    const ePts = []; const n = 40;
+    for (let i=0;i<=n;i++){ const t=i/n; ePts.push([x0+(x1-x0)*t, h*(0.78 - 0.42*t) + Math.sin(t*9)*h*0.008]); }
+    const sPts = []; const m = 60; let y = h*0.42;
+    for (let i=0;i<=m;i++){ const t=i/m; const drift = t<0.55 ? -0.002 : 0.012; y += h*(drift + (rnd()-0.5)*0.05); y=Math.max(h*0.2,Math.min(h*0.88,y)); sPts.push([x0+(x1-x0)*t,y]); }
+    geo = {clouds:clouds, drops:drops, ePts:ePts, sPts:sPts};
+  }
+  function upto(pts, p){ const k = Math.max(1, Math.round((pts.length-1)*p)); return pts.slice(0, k+1); }
+  function draw(p, time){
+    const g = cv.getContext("2d");
+    const sky = g.createLinearGradient(0,0,0,h);
+    sky.addColorStop(0,"#0B2124"); sky.addColorStop(.6,"#163D40"); sky.addColorStop(1,"#21504F");
+    g.fillStyle = sky; g.fillRect(0,0,w,h);
+    geo.clouds.forEach(function(c, i){
+      const cx = (c[0] + w*0.3 + time*0.004*(1+i%3)) % (w*1.6) - w*0.3;
+      const cg = g.createRadialGradient(cx,c[1],0,cx,c[1],c[2]);
+      cg.addColorStop(0,"rgba(190,210,210,0.16)"); cg.addColorStop(1,"rgba(190,210,210,0)");
+      g.fillStyle = cg; g.beginPath(); g.ellipse(cx,c[1],c[2],c[2]*0.45,0,0,Math.PI*2); g.fill();
+    });
+    g.strokeStyle = "rgba(200,225,225,0.14)"; g.lineWidth = 1;
+    geo.drops.forEach(function(d){
+      const yy = (d[1] + time*0.06*d[3]) % (h + 30) - 15, xx = d[0];
+      g.beginPath(); g.moveTo(xx,yy); g.lineTo(xx-d[2]*0.25,yy+d[2]); g.stroke();
+    });
+    g.strokeStyle = "rgba(220,240,238,0.08)";
+    for (let i=1;i<5;i++){ const yy=h*i/5; g.beginPath(); g.moveTo(0,yy); g.lineTo(w,yy); g.stroke(); }
+    const e = upto(geo.ePts, p), s = upto(geo.sPts, p);
+    const fill = g.createLinearGradient(0,h*0.3,0,h);
+    fill.addColorStop(0,"rgba(142,223,168,0.32)"); fill.addColorStop(1,"rgba(142,223,168,0)");
+    g.beginPath(); g.moveTo(e[0][0],h); e.forEach(function(pt){ g.lineTo(pt[0],pt[1]); }); g.lineTo(e[e.length-1][0],h); g.closePath(); g.fillStyle=fill; g.fill();
+    g.beginPath(); e.forEach(function(pt,i){ i?g.lineTo(pt[0],pt[1]):g.moveTo(pt[0],pt[1]); }); g.strokeStyle="#8EDFA8"; g.lineWidth=Math.max(2.5,w*0.006); g.lineJoin="round"; g.stroke();
+    g.beginPath(); s.forEach(function(pt,i){ i?g.lineTo(pt[0],pt[1]):g.moveTo(pt[0],pt[1]); }); g.strokeStyle="#F2876F"; g.lineWidth=Math.max(2,w*0.0045); g.stroke();
+    const fs = Math.max(13, w*0.032);
+    g.font = "700 "+fs+"px 'Noto Sans TC','PingFang TC',sans-serif"; g.textBaseline="middle";
+    const pulse = 1 + 0.35*Math.max(0, Math.sin(time/380));
+    [[e[e.length-1],"#8EDFA8","盈利 ▲"],[s[s.length-1],"#F2876F","情緒 ▼"]].forEach(function(a){
+      g.fillStyle=a[1];
+      if (p >= 1){ g.globalAlpha = 0.25; g.beginPath(); g.arc(a[0][0],a[0][1],Math.max(4,w*0.009)*pulse*1.8,0,Math.PI*2); g.fill(); g.globalAlpha = 1; }
+      g.beginPath(); g.arc(a[0][0],a[0][1],Math.max(4,w*0.009),0,Math.PI*2); g.fill();
+      if (p >= 1) g.fillText(a[2], a[0][0]+w*0.022, a[0][1]);
+    });
+  }
+  function loop(now){
+    if (t0 === null) t0 = now;
+    const p = Math.min(1, (now - t0)/1800);
+    draw(1 - Math.pow(1-p,2), now);
+    raf = visible ? requestAnimationFrame(loop) : null;
+  }
+  function start(){ if (!raf) raf = requestAnimationFrame(loop); }
+  build();
+  if (reduceMotion) draw(1, 0); else start();
+  if ("IntersectionObserver" in window && !reduceMotion){
+    new IntersectionObserver(function(en){ visible = en[0].isIntersecting; if (visible) start(); }).observe(cv);
+  }
+  let rt; window.addEventListener("resize", function(){ clearTimeout(rt); rt = setTimeout(function(){ build(); if (reduceMotion || !raf) draw(1, performance.now()); }, 120); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ if (reduceMotion) draw(1,0); });
+})();
+</script>
 </body>
 </html>
