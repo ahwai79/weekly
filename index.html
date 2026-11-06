@@ -144,6 +144,12 @@ svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .cal .m{display:block;background:var(--accent);color:var(--paper);font-size:11px;font-weight:700;padding:2px 0;letter-spacing:.06em}
 .cal .dd{display:block;font-family:var(--mono);font-weight:600;font-size:16px;padding:5px 0 4px;font-variant-numeric:tabular-nums}
 
+/* special issue: reasons box */
+.why{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 16px}
+.why .watch li{background:var(--accent-soft)}
+.watch .ico{justify-self:center}
+.watch strong{color:var(--ink)}
+
 /* contact */
 .cta{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 16px;display:flex;flex-direction:column;gap:12px}
 .cta h3{font-family:var(--serif);font-size:19px;margin:0}
@@ -201,44 +207,44 @@ svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stro
     <div class="mast-text">
       <div class="brand">阿維每週市場筆記</div>
       <div class="issue">環球視野 · 基本面為本</div>
-      <div class="issue">第 2 期 · 2026.11.02 · 數據截至 10/30</div>
+      <div class="issue">大選特刊 · 2026.11.06 · 數據截至 11/5</div>
     </div>
   </header>
 
   <figure class="hero">
-    <canvas id="hero" role="img" aria-label="示意圖：美國經濟和企業盈利成績亮麗，股價仍在搖擺" data-weather="cloudy"></canvas>
-    <figcaption>示意圖｜成績表亮麗，股價仍在搖擺</figcaption>
+    <canvas id="hero" role="img" aria-label="示意圖：美國中期選舉後兩天，標普 500 週三升 1.6%，週四跌 4.4%" data-weather="storm"></canvas>
+    <figcaption>示意圖｜一場大選，兩天兩樣情</figcaption>
   </figure>
 
   <section class="simple" aria-labelledby="simple-title">
-    <h2 id="simple-title">一分鐘看懂：本週和你有甚麼關係？</h2>
+    <h2 id="simple-title">一分鐘看懂：美國大選後，股市發生了甚麼事？</h2>
     <ul class="simple-list">
       <li class="rv">
-        <span class="ico c1"><svg class="i"><use href="#i-bag"/></svg></span>
+        <span class="ico c3"><svg class="i"><use href="#i-city"/></svg></span>
         <div>
-          <div class="head"><span class="tag">物價</span><span class="chip warn">100 元 → 約 102 元</span></div>
-          <p>香港物價一年升了 1.9%，即是去年 100 元的東西，今年要約 102 元。美國物價升得更快，約 3.6%。油價 10 月升了一成多，入油、坐車和買東西都可能再貴一點。</p>
+          <div class="head"><span class="tag">選舉</span><span class="chip warn">週三 +1.6%</span></div>
+          <p>11 月 3 日，美國選出新的國會。民主黨同時贏了參議院和眾議院，總統所屬的共和黨不再控制國會。第二天（週三），美股先升了 1.6%。</p>
+        </div>
+      </li>
+      <li class="rv">
+        <span class="ico c1"><svg class="i"><use href="#i-down"/></svg></span>
+        <div>
+          <div class="head"><span class="tag">大跌</span><span class="chip bad">週四 −4.4%</span></div>
+          <p>再過一天（週四），美股一天跌了 4.4%，是一年半以來跌得最多的一天。跌得最厲害的，是做電腦晶片和人工智能的公司。</p>
         </div>
       </li>
       <li class="rv">
         <span class="ico c2"><svg class="i"><use href="#i-coins"/></svg></span>
         <div>
-          <div class="head"><span class="tag">存錢</span><span class="chip">一年多收約 1,150 元</span></div>
-          <p>大銀行 3 個月定存約 2.4%，有些銀行存一年最高有 3.55%。10 萬元存一年，兩者相差約 1,150 元。高息通常有條件，例如要存一大筆新錢，存之前先看清楚。</p>
-        </div>
-      </li>
-      <li class="rv">
-        <span class="ico c3"><svg class="i"><use href="#i-home"/></svg></span>
-        <div>
-          <div class="head"><span class="tag">供樓</span><span class="chip warn">每月多供約 700 元</span></div>
-          <p>美國這次沒有加息，但市場估計 12 月再加的機會約七成。以 500 萬元、供 30 年計，利率每升 0.25%，每月就要多供約 700 元。</p>
+          <div class="head"><span class="tag">公司</span><span class="chip">盈利 +30%</span></div>
+          <p>美國大公司今年第三季賺的錢，比去年多了約三成。這次大跌，主要是這些股票之前升得太快，大家一起賣出；不是公司突然不賺錢。</p>
         </div>
       </li>
       <li class="rv">
         <span class="ico c4"><svg class="i"><use href="#i-trend"/></svg></span>
         <div>
-          <div class="head"><span class="tag">投資</span><span class="chip bad">10 萬 → 約 9.94 萬</span></div>
-          <p>美股一星期跌了 0.6%，即是 10 萬元的美股少了約 570 元；港股就升了 0.9%。美國大公司賺的錢比去年多了三成，經濟也比預期好。短期股價跟着大家的心情走，長遠還是要看公司賺不賺錢。</p>
+          <div class="head"><span class="tag">全年</span><span class="chip">今年仍 +7.4%</span></div>
+          <p>就算跌了這一天，美股由今年 1 月到現在仍升了 7.4%。如果你的強積金或基金有美股，這星期的結餘可能少了，但要放在更長的時間來看。</p>
         </div>
       </li>
     </ul>
@@ -246,74 +252,85 @@ svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stro
   </section>
 
   <section class="lead rv">
-    <h1>成績表亮麗，股價仍在搖擺。</h1>
-    <p>美國第三季經濟按年率增長 3.4%，企業盈利按年增長約三成，兩者都好過預期；但週五科技股急跌，標普 500 一週回落 0.6%。聯儲局維持利率不變。港股則止住兩週跌勢，一週回升 0.9%。</p>
+    <h1>一天大跌，先看清楚三件事。</h1>
+    <p>美國 11 月 3 日中期選舉，民主黨取得參議院和眾議院。選舉後第一天，標普 500 指數升 1.6%；第二天，人工智能和晶片股急跌，標普 500 一天跌 4.4%，納斯達克指數跌 5.5%。計一星期，標普 500 跌 3.0%。下面用三個問題，看看這次大跌是怎樣一回事：跌了多少、為甚麼跌、公司是否仍然賺錢。</p>
   </section>
 
-  <section class="life" aria-labelledby="life-title">
-    <p class="section-label" id="life-title">先講身邊事</p>
+  <section class="life" aria-labelledby="zoom-title">
+    <p class="section-label" id="zoom-title">問題一：跌了多少？放在全年來看</p>
     <div class="life-grid">
       <article class="life-card rv">
-        <div class="top"><span class="ico c2"><svg class="i"><use href="#i-coins"/></svg></span><h3>定期存款</h3></div>
-        <ul class="bars" aria-label="港元定存息率與香港通脹比較">
-          <li><span>大銀行 3 個月</span><span class="val">2.40%</span><span class="track"><span class="fill" style="--w:60%"></span></span></li>
-          <li><span>12 個月新資金最高</span><span class="val">3.55%</span><span class="track"><span class="fill" style="--w:88.75%"></span></span></li>
-          <li><span>香港物價升幅（9 月）</span><span class="val">1.9%</span><span class="track"><span class="fill alt" style="--w:47.5%"></span></span></li>
+        <div class="top"><span class="ico c4"><svg class="i"><use href="#i-trend"/></svg></span><h3>今年累計升幅</h3></div>
+        <ul class="bars" aria-label="標普 500 今年累計升幅：大跌前後">
+          <li><span>大跌前（週三收市）</span><span class="val">+12.3%</span><span class="track"><span class="fill" style="--w:82%"></span></span></li>
+          <li><span>大跌後（週四收市）</span><span class="val">+7.4%</span><span class="track"><span class="fill" style="--w:49.33%"></span></span></li>
         </ul>
-        <p class="cap">12 個月息率截至 10 月 26 日，大銀行 3 個月為 10 月 9 日資料；橫條以 4% 為滿格</p>
-        <p>富邦、華僑永亨 12 個月新資金定存最高 3.55%（富邦要 100 萬元起）；大銀行 3 個月仍約 2.40%。以 10 萬元計，兩者一年相差約 1,150 元。部分新客優惠標榜很高的息率，但多數只限 1 個月或有金額上限，要看清條件。</p>
+        <p class="cap">標普 500 指數，由 2026 年初計；橫條以 15% 為滿格</p>
+        <p>大跌之後，標普 500 今年的升幅由 12.3% 減到 7.4%。少了一截，但仍然是升。</p>
       </article>
       <article class="life-card rv">
-        <div class="top"><span class="ico c3"><svg class="i"><use href="#i-city"/></svg></span><h3>香港樓市</h3></div>
-        <ul class="bars" aria-label="中原城市領先指數：低位與最新">
-          <li><span>2024–25 年低位</span><span class="val">約 135</span><span class="track"><span class="fill soft" style="--w:75%"></span></span></li>
-          <li><span>最新（10 月 30 日公佈）</span><span class="val">159.38</span><span class="track"><span class="fill" style="--w:88.54%"></span></span></li>
+        <div class="top"><span class="ico c1"><svg class="i"><use href="#i-down"/></svg></span><h3>週四跌了多少</h3></div>
+        <ul class="bars" aria-label="週四各指數單日跌幅">
+          <li><span>晶片股（費城半導體指數）</span><span class="val">−12.3%</span><span class="track"><span class="fill alt" style="--w:82%"></span></span></li>
+          <li><span>納斯達克指數</span><span class="val">−5.5%</span><span class="track"><span class="fill alt" style="--w:36.67%"></span></span></li>
+          <li><span>標普 500 指數</span><span class="val">−4.4%</span><span class="track"><span class="fill alt" style="--w:29.33%"></span></span></li>
+          <li><span>道瓊斯指數</span><span class="val">−3.4%</span><span class="track"><span class="fill alt" style="--w:22.67%"></span></span></li>
         </ul>
-        <p class="cap">中原城市領先指數 CCL（10 月 30 日公佈）；橫條以 180 為滿格</p>
-        <p>樓價一週跌 0.33%，連跌三週，是 2024 年 8 月以來首見；比 8 月中高位低約 1.7%，但今年累計仍升 10.6%。供樓方面，1 個月 HIBOR 於 10 月 30 日為 2.71%，比上週略低；四大銀行最優惠利率維持 5%。</p>
+        <p class="cap">11 月 5 日單日跌幅；橫條以 15% 為滿格</p>
+        <p>跌得最多的是晶片股，一天跌了一成多。科技股越少的指數，跌得越少。</p>
       </article>
     </div>
   </section>
 
+  <section class="why rv" aria-labelledby="why-title">
+    <p class="section-label" id="why-title">問題二：為甚麼會大跌？</p>
+    <ul class="watch">
+      <li><span class="ico c3"><svg class="i"><use href="#i-city"/></svg></span><span><strong>擔心新規矩。</strong>人工智能要用很多「數據中心」（放滿電腦的大廠房），有人不滿它們令電費變貴。新國會可能訂更多規矩，甚至暫停興建，投資者擔心這些公司的生意受影響。</span></li>
+      <li><span class="ico c1"><svg class="i"><use href="#i-trend"/></svg></span><span><strong>之前升得太快。</strong>晶片和人工智能股是今年升得最多的股票。年尾前，不少大型基金趁價錢高先賣出，把賺到的錢收袋。</span></li>
+      <li><span class="ico c4"><svg class="i"><use href="#i-chat"/></svg></span><span><strong>大家一起跟著賣。</strong>一些人賣，其他人怕了也跟著賣。量度市場緊張程度的「恐慌指數」VIX，一天升了約七成。</span></li>
+    </ul>
+  </section>
+
   <section>
-    <p class="section-label">本週數字：先看環球</p>
+    <p class="section-label">本週數字（10/30 至 11/5）</p>
     <div class="stats">
-      <div class="stat rv"><span class="ico"><svg class="i"><use href="#i-bars"/></svg></span><div class="k">標普 500 指數</div><div class="v" data-count="7580" data-dec="0">7,580</div><div class="d down"><svg class="i" style="width:14px;height:14px"><use href="#i-down"/></svg>0.6% 按週</div></div>
-      <div class="stat rv"><span class="ico"><svg class="i"><use href="#i-pct"/></svg></span><div class="k">美國 10 年期債息</div><div class="v" data-count="4.94" data-dec="2" data-suffix="%">4.94%</div><div class="d flat"><svg class="i" style="width:14px;height:14px"><use href="#i-down"/></svg>0.06 個百分點</div></div>
-      <div class="stat rv"><span class="ico"><svg class="i"><use href="#i-drop"/></svg></span><div class="k">布蘭特油價（12 月期貨）</div><div class="v" data-count="117.64" data-dec="2" data-prefix="$">$117.64</div><div class="d up"><svg class="i" style="width:14px;height:14px"><use href="#i-up"/></svg>0.8% 按週</div></div>
-      <div class="stat rv"><span class="ico"><svg class="i"><use href="#i-city"/></svg></span><div class="k">恒生指數</div><div class="v" data-count="23294" data-dec="0">23,294</div><div class="d up"><svg class="i" style="width:14px;height:14px"><use href="#i-up"/></svg>0.9% 按週</div></div>
+      <div class="stat rv"><span class="ico"><svg class="i"><use href="#i-bars"/></svg></span><div class="k">標普 500 指數</div><div class="v" data-count="7354" data-dec="0">7,354</div><div class="d down"><svg class="i" style="width:14px;height:14px"><use href="#i-down"/></svg>3.0% 按週</div></div>
+      <div class="stat rv"><span class="ico"><svg class="i"><use href="#i-trend"/></svg></span><div class="k">納斯達克指數</div><div class="v" data-count="24315" data-dec="0">24,315</div><div class="d down"><svg class="i" style="width:14px;height:14px"><use href="#i-down"/></svg>4.4% 按週</div></div>
+      <div class="stat rv"><span class="ico"><svg class="i"><use href="#i-pct"/></svg></span><div class="k">恐慌指數 VIX</div><div class="v" data-count="28.18" data-dec="1">28.2</div><div class="d up"><svg class="i" style="width:14px;height:14px"><use href="#i-up"/></svg>週四一天升約七成</div></div>
+      <div class="stat rv"><span class="ico"><svg class="i"><use href="#i-city"/></svg></span><div class="k">恒生指數</div><div class="v" data-count="24797" data-dec="0">24,797</div><div class="d up"><svg class="i" style="width:14px;height:14px"><use href="#i-up"/></svg>6.5% 按週</div></div>
     </div>
   </section>
 
   <section class="thermo" aria-labelledby="thermo-title">
     <div class="thermo-head">
+      <p class="section-label" style="margin:0 0 4px">問題三：公司和經濟還好嗎？</p>
       <h2 id="thermo-title">基本面溫度計</h2>
-      <p>長線投資看三件事：經濟、企業、估值。經濟分美國、中國、香港；估值分美股、港股。</p>
+      <p>股價每天都會上落；長遠來說，要看經濟、公司賺錢和股價貴不貴。</p>
       <div class="legend" aria-hidden="true"><span><i style="background:var(--ok)"></i>穩健</span><span><i style="background:var(--warn)"></i>留意</span><span><i style="background:var(--bad)"></i>警示</span></div>
     </div>
     <div class="row">
       <div class="gauge" style="--a:5deg"><svg viewBox="0 0 120 66" aria-hidden="true"></svg><span class="name">美國經濟</span><span class="pill warn">留意</span></div>
-      <p>第三季經濟按年率增長 <span class="num">3.4%</span>，好過預期；但 9 月物價仍升約 <span class="num">3.6%</span>，新增職位只有 <span class="num">2.9</span> 萬，失業率 <span class="num">4.2%</span>。增長快、物價高、請人慢，所以要留意。</p>
+      <p>第三季經濟增長 <span class="num">3.4%</span>（年率），工廠生意也在增長（指數 <span class="num">55.5</span>，高於 <span class="num">50</span> 即是擴張）。但物價一年升 <span class="num">3.7%</span>，仍然偏高。</p>
     </div>
     <div class="row">
       <div class="gauge" style="--a:20deg"><svg viewBox="0 0 120 66" aria-hidden="true"></svg><span class="name">中國經濟</span><span class="pill warn">留意</span></div>
-      <p>第三季經濟按年增長 <span class="num">4.5%</span>；但 10 月製造業採購經理指數跌至 <span class="num">49.3</span>，非製造業 <span class="num">49.7</span>，兩者都低於代表擴張的 <span class="num">50</span>，第四季開局偏弱。</p>
+      <p>第三季增長 <span class="num">4.5%</span>；但 10 月工廠和服務業指數只有 <span class="num">49.3</span> 和 <span class="num">49.7</span>，低於 <span class="num">50</span>，生意略為收縮。</p>
     </div>
     <div class="row">
-      <div class="gauge" style="--a:-40deg"><svg viewBox="0 0 120 66" aria-hidden="true"></svg><span class="name">香港經濟</span><span class="pill ok">穩健</span></div>
-      <p>9 月通脹 <span class="num">1.9%</span>、失業率 <span class="num">3.9%</span>，大致平穩；第二季經濟增長 <span class="num">4.3%</span>。第三季數字 11 月 3 日公佈，政府表示會高於市場預期。</p>
+      <div class="gauge" style="--a:-58deg"><svg viewBox="0 0 120 66" aria-hidden="true"></svg><span class="name">香港經濟</span><span class="pill ok">穩健</span></div>
+      <p>第三季增長 <span class="num">5.2%</span>，首三季 <span class="num">5.1%</span>，是 5 年來最快。失業率 <span class="num">3.9%</span>。</p>
     </div>
     <div class="row">
       <div class="gauge" style="--a:-60deg"><svg viewBox="0 0 120 66" aria-hidden="true"></svg><span class="name">美國企業</span><span class="pill ok">穩健</span></div>
-      <p>標普 500 公司第三季業績已公佈六成，<span class="num">82%</span> 盈利好過預期。整體盈利按年增長 <span class="num">30.2%</span>，收入增長 <span class="num">13.4%</span>。要留意的是，超出預期的幅度比過去 5 年平均小。</p>
+      <p>已公佈業績的大公司中，每 10 間有約 <span class="num">8</span> 間賺得比預期多；整體盈利比去年多 <span class="num">30.2%</span>（截至 10 月 30 日）。</p>
     </div>
     <div class="row">
-      <div class="gauge" style="--a:18deg"><svg viewBox="0 0 120 66" aria-hidden="true"></svg><span class="name">標普估值</span><span class="pill warn">留意</span></div>
-      <p>以未來 12 個月盈利計，標普 500 市盈率 <span class="num">18.7</span> 倍，低於 5 年平均 <span class="num">19.8</span> 倍；但以過去 12 個月盈利計約 <span class="num">25.9</span> 倍（10 月 30 日），明顯高於 1917 年以來平均約 <span class="num">16</span> 倍。</p>
+      <div class="gauge" style="--a:15deg"><svg viewBox="0 0 120 66" aria-hidden="true"></svg><span class="name">標普估值</span><span class="pill warn">留意</span></div>
+      <p>大跌前，美股價錢約等於公司過去一年盈利的 <span class="num">25.9</span> 倍，長期平均約 <span class="num">16</span> 倍，即是偏貴。這也是股價容易大上大落的原因之一。</p>
     </div>
     <div class="row">
-      <div class="gauge" style="--a:-8deg"><svg viewBox="0 0 120 66" aria-hidden="true"></svg><span class="name">恒指估值</span><span class="pill warn">留意</span></div>
-      <p>恒指市盈率 <span class="num">11.6</span> 倍（10 月 1 日），比長期平均 <span class="num">10.69</span> 倍高約 <span class="num">8.5%</span>，略高於平均，但仍遠低於美股。</p>
+      <div class="gauge" style="--a:0deg"><svg viewBox="0 0 120 66" aria-hidden="true"></svg><span class="name">恒指估值</span><span class="pill warn">留意</span></div>
+      <p>港股約 <span class="num">11.6</span> 倍（10 月 1 日），略高於長期平均 <span class="num">10.69</span> 倍，但比美股便宜得多。</p>
     </div>
   </section>
 
@@ -324,19 +341,23 @@ svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stro
       <path d="M18 42h22a8 8 0 0 0 0-16 11 11 0 0 0-20-2 9 9 0 0 0-2 18z"/>
     </svg>
     <div>
-      <h3>市場情緒（補充）</h3>
-      <p>本週情緒反覆。美股週五急跌，納指錄得 6 月以來最大單日跌幅，市場再次擔心大型科技公司在人工智能上花錢太多。油價方面，有消息指美國或再對伊朗採取軍事行動，布蘭特油價 10 月累升約 13.6%。港股則回升，止住兩週跌勢，但 10 月全月仍跌約 5.4%。</p>
+      <h3>以前也試過嗎？</h3>
+      <p>上一次標普 500 一天跌得這麼多，是 2025 年 4 月美國宣佈大幅加關稅之後。當時大家也很驚慌，但指數在同年 6 月 27 日已回到歷史新高，前後約三個月。每次情況都不同，過去的走勢不代表將來，但它提醒我們：一天的大跌，不等於一整年的結果。</p>
     </div>
   </section>
 
   <section class="view rv">
-    <h3>長線投資者的角度</h3>
-    <p>短期價格受情緒影響；長期回報最終取決於企業盈利，以及買入時的估值。本週的情況是：經濟和盈利的成績都好過預期，估值大致合理；令股價搖擺的，主要是對科技投資和利率的擔心。</p>
-    <p class="section-label" style="margin-bottom:8px">下週留意</p>
+    <h3>大跌時，先問自己三個問題</h3>
+    <ul class="watch" style="margin-bottom:14px">
+      <li><span class="ico c2"><svg class="i"><use href="#i-coins"/></svg></span><span><strong>這筆錢幾時要用？</strong>幾年後才用的錢，和下個月要用的錢，應付股價上落的方法不一樣。</span></li>
+      <li><span class="ico c3"><svg class="i"><use href="#i-bars"/></svg></span><span><strong>我是否太集中？</strong>如果大部分錢都放在同一類股票（例如科技股），這次的感受會特別深。</span></li>
+      <li><span class="ico c4"><svg class="i"><use href="#i-pct"/></svg></span><span><strong>當初的原因變了嗎？</strong>選舉改變的是政策方向，不會一夜改變公司賺錢的能力。</span></li>
+    </ul>
+    <p class="section-label" style="margin-bottom:8px">接下來留意</p>
     <ul class="watch">
-      <li><span class="cal"><span class="m">11 月</span><span class="dd">3</span></span><span>香港公佈第三季經濟增長預先估計，政府表示會高於市場預期。</span></li>
-      <li><span class="cal"><span class="m">11 月</span><span class="dd">3</span></span><span>美國中期選舉，結果或影響市場對政策的預期。</span></li>
-      <li><span class="cal"><span class="m">11 月</span><span class="dd">6</span></span><span>美國公佈 10 月就業數據，市場預期新增約 5.5 萬個職位（9 月：2.9 萬）。</span></li>
+      <li><span class="cal"><span class="m">11 月</span><span class="dd">6</span></span><span>美國公佈 10 月就業數據（香港時間週五晚），市場預期新增約 6 萬個職位。</span></li>
+      <li><span class="cal"><span class="m">11 月</span><span class="dd">10</span></span><span>美國公佈 10 月物價（CPI），影響 12 月會否加息。</span></li>
+      <li><span class="cal"><span class="m">11 月</span><span class="dd">13</span></span><span>香港政府公佈全年經濟增長修訂預測。</span></li>
     </ul>
   </section>
 
@@ -364,13 +385,15 @@ svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stro
     <div>
       資料來源：
       <ol class="src">
-        <li>指數收市：<a href="https://finance.yahoo.com/markets/stocks/articles/major-us-stock-indexes-fared-202111310.html" target="_blank" rel="noopener">美聯社（標普 500，10/30）</a>、<a href="https://news.rthk.hk/rthk/ch/component/k2/1875961-20261030.htm" target="_blank" rel="noopener">香港電台</a>、<a href="https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-10-30/doc-iniwywts5514144.shtml" target="_blank" rel="noopener">新浪財經（恒指，10/30）</a></li>
-        <li>債息及油價：<a href="https://geo.multpl.com/10-year-treasury-rate" target="_blank" rel="noopener">multpl（債息，10/30）</a>、<a href="https://theglassdesk.substack.com/p/weekly-market-review-oct-30-2026" target="_blank" rel="noopener">The Glass Desk 週報（10/30）</a>、<a href="https://finance.yahoo.com/markets/live/stock-market-today-friday-october-30-dow-sp-500-nasdaq-amazon-intel-ai-sell-off-191429143.html" target="_blank" rel="noopener">Yahoo Finance（10/30）</a>、<a href="https://financefeeds.com/brent-crude-oil-price-113-saturday-week-ahead-after-october-13-6-percent-gain-hormuz-mines-midterms-jobs-report-bull-120-bear-106/" target="_blank" rel="noopener">FinanceFeeds（布蘭特結算）</a></li>
-        <li>企業盈利及估值：<a href="https://insight.factset.com/sp-500-earnings-season-update-october-30-2026" target="_blank" rel="noopener">FactSet（10/30）</a>、<a href="https://geo.multpl.com/s-p-500-pe-ratio" target="_blank" rel="noopener">multpl（過去 12 個月市盈率，10/30）</a>、<a href="https://chartrow.com/sp500/pe-ratio" target="_blank" rel="noopener">ChartRow（核對）</a>、<a href="https://www.gurufocus.com/economic_indicators/5732/pe-ratio-ttm-for-the-hang-seng-index" target="_blank" rel="noopener">GuruFocus（恒指市盈率，10/1）</a></li>
-        <li>美國經濟及聯儲局：<a href="https://bea.gov/news/2026/gdp-advance-estimate-3rd-quarter-2026" target="_blank" rel="noopener">美國經濟分析局（第三季 GDP）</a>、<a href="https://www.raisin.com/en-us/news/live-breakdown-fed-policy-statement-october-2026/" target="_blank" rel="noopener">聯儲局議息（10/28）</a></li>
-        <li>中國及香港：<a href="https://english.news.cn/20261031/d98d1f3fa92a45d6a26f234849bd4957/c.html" target="_blank" rel="noopener">新華社（中國 10 月 PMI）</a>、<a href="https://hk.on.cc/hk/bkn/cnt/finance/20261101/bkn-20261101141604238-1101_00842_001.html" target="_blank" rel="noopener">東網（香港第三季 GDP 公佈日期）</a></li>
-        <li>定存、樓市、息口：<a href="https://www.10life.com/zh-HK/blog/hkd-fixed-deposit-rates-comparison" target="_blank" rel="noopener">港元定存比較（10/26）</a>、<a href="https://www.hkcd.com/hkcdweb/content/2026/10/30/content_8782679.html" target="_blank" rel="noopener">香港商報（中原城市領先指數）</a>、<a href="https://hk.investing.com/news/forex-news/article-1729242" target="_blank" rel="noopener">HIBOR（10/30）</a></li>
-        <li>聯儲局預期及下週日程：<a href="https://hk.investing.com/central-banks/fed-rate-monitor" target="_blank" rel="noopener">Investing.com 美聯儲利率監測工具（10/31）</a>、<a href="https://www.stheadline.com/investment/3402209/定存攻略港元定存掀加息潮-至少13間3厘或以上-美元定存高逾4厘-附銀債退款優惠" target="_blank" rel="noopener">星島（引用 CME FedWatch）</a>、<a href="https://danielsan2401.substack.com/p/week-ahead-2nd-6th-november-ten-to" target="_blank" rel="noopener">Week Ahead（11/2–6）</a></li>
+        <li>美國中期選舉：<a href="https://www.pbs.org/newshour/politics/democrats-take-control-of-the-senate-after-winning-key-midterm-races" target="_blank" rel="noopener">美聯社／PBS（參議院，11/3）</a>、<a href="https://www.cbsnews.com/live-updates/midterm-election-results-2026-democrats-house-senate-trump/" target="_blank" rel="noopener">CBS News（參眾兩院，11/5）</a></li>
+        <li>指數收市：<a href="https://finance.yahoo.com/markets/world-indices/articles/major-us-stock-indexes-fared-212456789.html" target="_blank" rel="noopener">美聯社（11/4）</a>、<a href="https://krmg.com/2026/11/05/how-major-us-stock-indexes-fared-thursday-11-5-2026/" target="_blank" rel="noopener">美聯社（11/5）</a>、<a href="https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-5-dow-sp-500-nasdaq-plunge-chip-stocks-melt-down-193726491.html" target="_blank" rel="noopener">Yahoo Finance（11/5）</a>、<a href="https://finance.sina.com.cn/stock/hkstock/marketalerts/2026-11-05/doc-inixsmiy9504161.shtml" target="_blank" rel="noopener">新浪財經（恒指，11/5）</a>、<a href="https://www.fx168news.com/express/fastnews/1463100" target="_blank" rel="noopener">FX168（恒指核對）</a></li>
+        <li>科技股、債息及油價：<a href="https://nbcbayarea.com/news/national-international/november-5-stock-market/4170982" target="_blank" rel="noopener">美聯社（11/5）</a>、<a href="https://www.stocktitan.net/articles/stock-market-today-live-november-5-2026" target="_blank" rel="noopener">StockTitan（11/5）</a>、<a href="https://www.mortgagenewsdaily.com/treasury/10yr" target="_blank" rel="noopener">Mortgage News Daily（債息）</a>、<a href="https://energynow.ca/2026/11/oil-prices-rebound-following-historic-selloff-as-markets-weigh-iran-war-risks-and-u-s-election-fallout/" target="_blank" rel="noopener">EnergyNow／路透（油價，11/5）</a></li>
+        <li>企業盈利及估值：<a href="https://insight.factset.com/sp-500-earnings-season-update-october-30-2026" target="_blank" rel="noopener">FactSet（10/30）</a>、<a href="https://geo.multpl.com/s-p-500-pe-ratio" target="_blank" rel="noopener">multpl（過去 12 個月市盈率，10/30）</a>、<a href="https://www.gurufocus.com/economic_indicators/5732/pe-ratio-ttm-for-the-hang-seng-index" target="_blank" rel="noopener">GuruFocus（恒指市盈率，10/1）</a></li>
+        <li>美國經濟及聯儲局：<a href="https://bea.gov/news/2026/gdp-advance-estimate-3rd-quarter-2026" target="_blank" rel="noopener">美國經濟分析局（第三季 GDP）</a>、<a href="https://www.prnewswire.com/news-releases/manufacturing-pmi-at-55-5-october-2026-ism-manufacturing-pmi-report-302925617.html" target="_blank" rel="noopener">ISM（10 月製造業）</a>、<a href="https://cpiinflationcalculator.com/the-consumer-price-index-rises-0-6-in-september-2026-seasonally-adjusted-and-rises-to-3-7-annually/" target="_blank" rel="noopener">美國 9 月 CPI</a>、<a href="https://www.fxstreet.hk/news/huang-jin-zai-na-si-da-ke-100zhi-shu-bao-die-zhi-ji-tu-po-4100mei-yuan-12yue-jia-xi-ya-zhu-jian-ruo-202611052024" target="_blank" rel="noopener">FXStreet（初領失業金、CME FedWatch，11/5）</a>、<a href="https://shishixinwen.news/news/jin10/20261106060419306800" target="_blank" rel="noopener">金十數據（CME FedWatch，11/6）</a></li>
+        <li>中國及香港：<a href="https://english.news.cn/20261031/d98d1f3fa92a45d6a26f234849bd4957/c.html" target="_blank" rel="noopener">新華社（中國 10 月 PMI）</a>、<a href="https://www.hkcd.com/hkcdweb/content/2026/11/03/content_8783379.html" target="_blank" rel="noopener">香港商報（香港第三季 GDP）</a></li>
+        <li>定存、樓市、息口：<a href="https://www.10life.com/zh-HK/blog/hkd-fixed-deposit-rates-comparison" target="_blank" rel="noopener">港元定存比較（11/2）</a>、<a href="https://www.hkcd.com/hkcdweb/content/2026/10/30/content_8782679.html" target="_blank" rel="noopener">香港商報（中原城市領先指數）</a>、<a href="https://www.hkab.org.hk/tc/rates/hibor" target="_blank" rel="noopener">銀行公會 HIBOR（11/4）</a></li>
+        <li>歷史參考：<a href="https://abc7.com/16864739" target="_blank" rel="noopener">美聯社（標普 500 於 2025 年 6 月 27 日創新高）</a>、<a href="https://www.spokesman.com/stories/2025/jun/27/sp-500-surges-through-trump-turmoil-to-a-record-hi" target="_blank" rel="noopener">The Spokesman-Review（2025 年 4 月關稅急跌後回升）</a></li>
+        <li>接下來日程：<a href="https://leprivatebanker.com/2026/11/05/treasury-yields-slide-as-tech-rout-fuels-haven-bid-with-two-year-down-11-basis-points-before-fridays-payrolls/" target="_blank" rel="noopener">The Private Banker（就業數據預期）</a>、<a href="https://www.litefinance.org/blog/analysts-opinions/weekly-economic-calendar-for-09112026-15112026/" target="_blank" rel="noopener">LiteFinance（11/9–15 日程）</a></li>
       </ol>
     </div>
   </footer>
@@ -449,9 +472,10 @@ function countUp(el){
   setTimeout(function(){ document.querySelectorAll(".rv, .gauge").forEach(function(el){ el.classList.add("in"); }); }, 4000);
 })();
 
-// Hero illustration (第 2 期): "成績表亮麗，股價仍在搖擺".
-// Left: a report card with two ticked results (US GDP, S&P 500 earnings). Right: a swaying price line under a cloudy sky.
-// The card rows and the line draw in once; afterwards only the clouds drift and the price line sways gently.
+// Hero illustration (大選特刊): "一場大選，兩天兩樣情".
+// Left: a ballot box with a ballot dropping in (US midterms, 3 Nov). Right: two daily bars for the S&P 500,
+// Wednesday up 1.6% (green) and Thursday down 4.4% (coral), under a stormy sky with static rain.
+// The ballot drops and the bars grow once; afterwards only the clouds drift.
 (function hero(){
   const cv = document.getElementById("hero");
   if (!cv) return;
@@ -460,89 +484,112 @@ function countUp(el){
   const FONT = "'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif";
   const SERIF = "'Noto Serif TC','Songti TC',serif";
   function build(){
-    seed = 11;
+    seed = 23;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     w = cv.clientWidth || 600; h = Math.round(w * 9 / 16);
     cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
     cv.getContext("2d").setTransform(dpr,0,0,dpr,0,0);
     const clouds = [];
-    for (let i=0;i<10;i++) clouds.push([rnd()*w, rnd()*h*0.45, (0.14+rnd()*0.2)*w]);
-    // price line: wobbles up and down around a flat path, ends a little lower than it started
-    const lx0 = w*0.50, lx1 = w*0.86, pts = []; const m = 56; let y = 0;
-    for (let i=0;i<=m;i++){ const t=i/m; y = Math.sin(t*Math.PI*3.2)*0.16 + Math.sin(t*Math.PI*9)*0.05 + (rnd()-0.5)*0.04 + t*0.22; pts.push([lx0+(lx1-lx0)*t, y]); }
-    geo = {clouds:clouds, pts:pts};
+    for (let i=0;i<12;i++) clouds.push([rnd()*w, rnd()*h*0.32, (0.16+rnd()*0.22)*w]);
+    const rain = [];
+    for (let i=0;i<70;i++) rain.push([rnd()*w*1.1, rnd()*h, (0.03+rnd()*0.04)*h]);
+    geo = {clouds:clouds, rain:rain};
   }
   function rr(g,x,y,ww,hh,r){ g.beginPath(); g.moveTo(x+r,y); g.arcTo(x+ww,y,x+ww,y+hh,r); g.arcTo(x+ww,y+hh,x,y+hh,r); g.arcTo(x,y+hh,x,y,r); g.arcTo(x,y,x+ww,y,r); g.closePath(); }
-  function tick(g,x,y,s,p){
-    g.beginPath(); g.moveTo(x-s*0.45,y);
-    if (p > 0) g.lineTo(x-s*0.45+s*0.3*Math.min(1,p*2), y+s*0.3*Math.min(1,p*2));
-    if (p > 0.5) g.lineTo(x-s*0.15+s*0.6*(p-0.5)*2, y+s*0.3-s*0.65*(p-0.5)*2);
-    g.stroke();
-  }
+  const ease = function(x){ x = Math.max(0, Math.min(1, x)); return 1 - Math.pow(1-x, 3); };
   function draw(p, time){
     const g = cv.getContext("2d");
+    // stormy sky
     const sky = g.createLinearGradient(0,0,0,h);
-    sky.addColorStop(0,"#0D2629"); sky.addColorStop(.6,"#17403F"); sky.addColorStop(1,"#22524E");
+    sky.addColorStop(0,"#0A1F22"); sky.addColorStop(.6,"#123432"); sky.addColorStop(1,"#1B4441");
     g.fillStyle = sky; g.fillRect(0,0,w,h);
-    // soft sun glow behind clouds: cloudy, not stormy
-    const sun = g.createRadialGradient(w*0.82,h*0.18,0,w*0.82,h*0.18,w*0.22);
-    sun.addColorStop(0,"rgba(242,194,107,0.28)"); sun.addColorStop(1,"rgba(242,194,107,0)");
-    g.fillStyle = sun; g.fillRect(0,0,w,h);
     geo.clouds.forEach(function(c, i){
-      const cx = (c[0] + w*0.3 + time*0.004*(1+i%3)) % (w*1.6) - w*0.3;
+      const cx = (c[0] + w*0.3 + time*0.005*(1+i%3)) % (w*1.6) - w*0.3;
       const cg = g.createRadialGradient(cx,c[1],0,cx,c[1],c[2]);
-      cg.addColorStop(0,"rgba(200,218,216,0.16)"); cg.addColorStop(1,"rgba(200,218,216,0)");
-      g.fillStyle = cg; g.beginPath(); g.ellipse(cx,c[1],c[2],c[2]*0.45,0,0,Math.PI*2); g.fill();
+      cg.addColorStop(0,"rgba(150,170,170,0.22)"); cg.addColorStop(1,"rgba(150,170,170,0)");
+      g.fillStyle = cg; g.beginPath(); g.ellipse(cx,c[1],c[2],c[2]*0.42,0,0,Math.PI*2); g.fill();
     });
-    // ---- report card (left)
-    const cx = w*0.06, cy = h*0.16, cw = w*0.36, ch = h*0.68, r = w*0.022;
-    g.save(); g.shadowColor = "rgba(0,0,0,0.25)"; g.shadowBlur = w*0.03; g.shadowOffsetY = w*0.008;
-    rr(g,cx,cy,cw,ch,r); g.fillStyle = "#F7F4EC"; g.fill(); g.restore();
-    g.fillStyle = "#0E5A52"; rr(g,cx,cy,cw,h*0.13,r); g.fill(); g.fillRect(cx,cy+h*0.07,cw,h*0.06);
-    g.fillStyle = "#FFFFFF"; g.textBaseline = "middle";
-    g.font = "700 "+Math.max(12,w*0.034)+"px "+SERIF; g.fillText("美國成績表", cx+w*0.03, cy+h*0.065);
-    g.font = "500 "+Math.max(9,w*0.018)+"px "+FONT; g.fillStyle = "rgba(255,255,255,0.75)";
-    g.textAlign = "right"; g.fillText("第三季", cx+cw-w*0.03, cy+h*0.067); g.textAlign = "left";
-    const rows = [["經濟增長（年率）","3.4%"],["企業盈利（按年）","+30.2%"]];
-    rows.forEach(function(row, i){
-      const ry = cy + h*0.22 + i*h*0.205;
-      const rp = Math.max(0, Math.min(1, (p - 0.15 - i*0.25) / 0.35));
-      g.globalAlpha = Math.min(1, rp*1.5);
-      g.fillStyle = "#5B6866"; g.font = "500 "+Math.max(10,w*0.022)+"px "+FONT; g.fillText(row[0], cx+w*0.03, ry);
-      g.fillStyle = "#16211F"; g.font = "700 "+Math.max(14,w*0.046)+"px "+FONT; g.fillText(row[1], cx+w*0.03, ry+h*0.085);
-      // ticked circle
-      const tx = cx+cw-w*0.065, ty = ry+h*0.045, tr = w*0.03;
-      g.fillStyle = "#E3F1E8"; g.beginPath(); g.arc(tx,ty,tr,0,Math.PI*2); g.fill();
-      g.strokeStyle = "#2F7A4C"; g.lineWidth = Math.max(2,w*0.006); g.lineCap = "round"; g.lineJoin = "round";
-      tick(g, tx, ty-tr*0.05, tr*1.1, rp);
+    // static rain streaks
+    g.strokeStyle = "rgba(200,222,220,0.13)"; g.lineWidth = 1; g.lineCap = "round";
+    geo.rain.forEach(function(d){ g.beginPath(); g.moveTo(d[0], d[1]); g.lineTo(d[0]-d[2]*0.35, d[1]+d[2]); g.stroke(); });
+
+    // ---- ballot box (left)
+    const bw = w*0.30, bh = h*0.36, bx = w*0.07, by = h*0.86 - bh;
+    const lid = h*0.06;
+    // ballot slip dropping into the slot
+    const dp = ease(p/0.55);
+    const slipW = bw*0.42, slipH = h*0.20;
+    const slipX = bx + bw/2 - slipW/2;
+    const slipY = (by - h*0.36) + dp*(h*0.30);
+    g.save();
+    g.beginPath(); g.rect(0, 0, w, by + lid*0.5); g.clip();
+    g.save(); g.translate(slipX + slipW/2, slipY + slipH/2); g.rotate((1-dp)*-0.12);
+    g.fillStyle = "#FFFFFF"; rr(g, -slipW/2, -slipH/2, slipW, slipH, w*0.006); g.fill();
+    g.strokeStyle = "#D8D2C2"; g.lineWidth = 1;
+    for (let k=0;k<3;k++){ g.beginPath(); g.moveTo(-slipW*0.32, -slipH*0.22 + k*slipH*0.16); g.lineTo(slipW*0.10, -slipH*0.22 + k*slipH*0.16); g.stroke(); }
+    g.strokeStyle = "#2F7A4C"; g.lineWidth = Math.max(2, w*0.005); g.lineCap = "round"; g.lineJoin = "round";
+    g.beginPath(); g.moveTo(slipW*0.16, -slipH*0.06); g.lineTo(slipW*0.24, slipH*0.02); g.lineTo(slipW*0.36, -slipH*0.16); g.stroke();
+    g.restore();
+    g.restore();
+    // box body
+    g.save(); g.shadowColor = "rgba(0,0,0,0.3)"; g.shadowBlur = w*0.03; g.shadowOffsetY = w*0.008;
+    rr(g, bx, by, bw, bh, w*0.016); g.fillStyle = "#F7F4EC"; g.fill(); g.restore();
+    g.fillStyle = "#0E5A52"; rr(g, bx - bw*0.04, by - lid*0.3, bw*1.08, lid, w*0.012); g.fill();
+    g.fillStyle = "#0A2A27"; rr(g, bx + bw/2 - slipW*0.62, by - lid*0.3 + lid*0.38, slipW*1.24, lid*0.26, lid*0.13); g.fill();
+    // label on box
+    g.textBaseline = "middle"; g.textAlign = "center";
+    g.fillStyle = "#16211F"; g.font = "700 " + Math.max(12, w*0.036) + "px " + SERIF;
+    g.fillText("美國中期選舉", bx + bw/2, by + bh*0.42);
+    g.fillStyle = "#5B6866"; g.font = "500 " + Math.max(10, w*0.022) + "px " + FONT;
+    g.fillText("11 月 3 日", bx + bw/2, by + bh*0.64);
+    g.textAlign = "left";
+    // badge
+    const ba = ease((p - 0.45) / 0.3);
+    if (ba > 0){
+      g.globalAlpha = ba;
+      const tw = Math.max(11, w*0.026);
+      g.font = "700 " + tw + "px " + FONT;
+      const label = "國會易手", lw = g.measureText(label).width + tw*1.4, lh = tw*1.9;
+      const lx = bx + bw/2 - lw/2, ly = h*0.08;
+      g.fillStyle = "#F2C26B"; rr(g, lx, ly, lw, lh, lh/2); g.fill();
+      g.fillStyle = "#1B1A12"; g.textAlign = "center"; g.fillText(label, bx + bw/2, ly + lh/2 + 1); g.textAlign = "left";
       g.globalAlpha = 1;
-      if (i === 0){ g.strokeStyle = "#E2DCCD"; g.lineWidth = 1; g.beginPath(); g.moveTo(cx+w*0.03, ry+h*0.145); g.lineTo(cx+cw-w*0.03, ry+h*0.145); g.stroke(); }
-    });
-    g.fillStyle = "#2F7A4C"; g.font = "700 "+Math.max(9,w*0.019)+"px "+FONT;
-    g.globalAlpha = Math.max(0, Math.min(1, (p-0.7)/0.3)); g.fillText("兩項都好過預期", cx+w*0.03, cy+ch-h*0.045); g.globalAlpha = 1;
-    // ---- swaying price line (right)
-    const mid = h*0.50, amp = h*0.30, sway = (p >= 1 ? Math.sin(time/900) : 0);
-    const k = Math.max(1, Math.round((geo.pts.length-1)*p));
-    const line = geo.pts.slice(0,k+1).map(function(pt, i){ const t = i/(geo.pts.length-1); return [pt[0], mid + (pt[1] + sway*0.04*Math.sin(t*Math.PI*4)) * amp]; });
-    g.strokeStyle = "rgba(220,240,238,0.10)"; g.lineWidth = 1;
-    [0.30,0.50,0.70].forEach(function(f){ g.beginPath(); g.moveTo(w*0.48,h*f); g.lineTo(w*0.96,h*f); g.stroke(); });
-    g.beginPath(); line.forEach(function(pt,i){ i?g.lineTo(pt[0],pt[1]):g.moveTo(pt[0],pt[1]); });
-    g.strokeStyle = "#F2876F"; g.lineWidth = Math.max(2.5,w*0.006); g.lineJoin = "round"; g.lineCap = "round"; g.stroke();
-    const end = line[line.length-1];
-    g.fillStyle = "#F2876F"; g.beginPath(); g.arc(end[0],end[1],Math.max(4,w*0.009),0,Math.PI*2); g.fill();
-    if (p >= 1){
-      const pulse = 1 + 0.35*Math.max(0, Math.sin(time/380));
-      g.globalAlpha = 0.25; g.beginPath(); g.arc(end[0],end[1],Math.max(4,w*0.009)*pulse*1.8,0,Math.PI*2); g.fill(); g.globalAlpha = 1;
-      g.font = "700 "+Math.max(11,w*0.026)+"px "+FONT; g.textAlign = "right";
-      g.fillText("股價 搖擺", w*0.95, h*0.14);
-      g.font = "500 "+Math.max(9,w*0.019)+"px "+FONT; g.fillStyle = "rgba(242,135,111,0.85)";
-      g.fillText("標普 500 一週 −0.6%", w*0.95, h*0.21); g.textAlign = "left";
     }
+
+    // ---- two daily bars (right)
+    const x0 = w*0.50, x1 = w*0.95;
+    const base = h*0.42, unit = h*0.068; // one per cent
+    g.strokeStyle = "rgba(220,240,238,0.30)"; g.lineWidth = 1;
+    g.beginPath(); g.moveTo(x0, base); g.lineTo(x1, base); g.stroke();
+    g.fillStyle = "rgba(230,240,238,0.85)"; g.font = "700 " + Math.max(11, w*0.026) + "px " + FONT;
+    g.textAlign = "right"; g.fillText("標普 500 單日升跌", x1, h*0.10); g.textAlign = "left";
+    const barW = w*0.11;
+    const c1 = x0 + (x1-x0)*0.28, c2 = x0 + (x1-x0)*0.72;
+    const g1 = ease((p - 0.35) / 0.35), g2 = ease((p - 0.6) / 0.4);
+    // Wednesday: up 1.6%
+    const up = 1.6*unit*g1;
+    g.fillStyle = "#5FBF86"; rr(g, c1 - barW/2, base - up, barW, Math.max(0.01, up), Math.min(w*0.01, up/2)); g.fill();
+    // Thursday: down 4.4%
+    const dn = 4.4*unit*g2;
+    g.fillStyle = "#F2876F"; rr(g, c2 - barW/2, base, barW, Math.max(0.01, dn), Math.min(w*0.01, dn/2)); g.fill();
+    g.textAlign = "center";
+    g.fillStyle = "rgba(230,240,238,0.75)"; g.font = "500 " + Math.max(10, w*0.022) + "px " + FONT;
+    g.fillText("週三", c1, base + h*0.055);
+    g.fillText("週四", c2, base - h*0.045);
+    if (g1 > 0){
+      g.globalAlpha = g1; g.fillStyle = "#7FD6A0"; g.font = "700 " + Math.max(13, w*0.04) + "px " + FONT;
+      g.fillText("+1.6%", c1, base - up - h*0.055); g.globalAlpha = 1;
+    }
+    if (g2 > 0){
+      g.globalAlpha = g2; g.fillStyle = "#F7A08C"; g.font = "700 " + Math.max(13, w*0.04) + "px " + FONT;
+      g.fillText("−4.4%", c2, base + dn + h*0.06); g.globalAlpha = 1;
+    }
+    g.textAlign = "left";
   }
   function loop(now){
     if (t0 === null) t0 = now;
-    const p = Math.min(1, (now - t0)/2000);
-    draw(1 - Math.pow(1-p,2), now);
+    const p = Math.min(1, (now - t0)/2400);
+    draw(p, now);
     raf = visible ? requestAnimationFrame(loop) : null;
   }
   function start(){ if (!raf) raf = requestAnimationFrame(loop); }
