@@ -10,6 +10,10 @@ YYYY-MM-DD 係本期出版日期。做以下幾樣（重複跑都安全）：
    並整一張細圖 issues/og/YYYY-MM-DD-s.jpg 俾目錄頁用。
 3. 每個存檔頁頂部加「存檔」提示，WhatsApp 預覽改用嗰期自己嘅圖同網址。
 4. 重新生成往期目錄 issues/index.html（最新一期連去主網址，舊期連去存檔頁）。
+   特刊（special/YYYY-MM-DD-短名.html）都會一齊列入目錄，標明「特刊」。
+
+特刊發佈只需要重做目錄（唔會郁主頁同每週存檔）：
+    python3 tools/archive.py --index
 
 主網址 https://ahwai79.github.io/weekly/ 永遠係最新一期，唔受影響。
 """
@@ -23,6 +27,8 @@ BASE = "https://ahwai79.github.io/weekly/"
 ROOT = Path(__file__).resolve().parent.parent
 ISSUES = ROOT / "issues"
 OGDIR = ISSUES / "og"
+SPECIAL = ROOT / "special"
+SPOG = SPECIAL / "og"
 
 DISCLAIMER = ("【免責聲明】任何內容只作參考，並不構成任何投資建議。此網站只作知識及學術分享，"
               "絕對不會含應否買入或賣出某股票、何時出貨入貨、或按某些情況出貨入貨。"
@@ -93,9 +99,9 @@ def stamp_archive(path: Path):
     path.write_text(page, encoding="utf-8")
 
 
-def thumb(date: str):
-    src = OGDIR / f"{date}.png"
-    dst = OGDIR / f"{date}-s.jpg"
+def thumb(date: str, ogdir: Path = OGDIR):
+    src = ogdir / f"{date}.png"
+    dst = ogdir / f"{date}-s.jpg"
     if not src.exists():
         return False
     if not dst.exists() or dst.stat().st_mtime < src.stat().st_mtime:
@@ -115,19 +121,36 @@ def build_index():
     css = re.search(r"<style>\n(/\* Layout.*?)</style>", main, re.S)
     tokens = re.search(r"(:root\{.*?\n\}.*?:root\[data-theme=\"dark\"\]\{.*?\n\})", css.group(1), re.S).group(1) if css else ""
 
+    # 每週存檔同特刊一齊按日期排（新到舊）；「最新」只標最新一期每週筆記。
+    entries = [(f.stem, False, f) for f in files]
+    if SPECIAL.exists():
+        entries += [(f.stem[:10], True, f) for f in SPECIAL.glob("????-??-??-*.html")]
+    entries.sort(key=lambda e: (e[0], e[1]), reverse=True)
+    newest_weekly = files[0].stem if files else None
+
     cards = []
-    for i, f in enumerate(files):
-        date = f.stem
+    for key, is_special, f in entries:
+        stem = f.stem
         label, pub, asof, title = parse(f.read_text(encoding="utf-8"))
-        latest = i == 0
-        href = BASE if latest else f"{date}.html"
-        has = thumb(date)
-        img = (f'<img src="og/{date}-s.jpg" alt="" loading="lazy" width="600" height="315">'
+        if is_special:
+            latest = False
+            href = f"../special/{stem}.html"
+            has = thumb(stem, SPOG)
+            src = f"../special/og/{stem}-s.jpg"
+            tag = '<span class="sp">特刊</span>'
+            label = "" if label == "特刊" else label
+        else:
+            latest = stem == newest_weekly
+            href = BASE if latest else f"{stem}.html"
+            has = thumb(stem)
+            src = f"og/{stem}-s.jpg"
+            tag = '<span class="new">最新</span>' if latest else ""
+        img = (f'<img src="{src}" alt="" loading="lazy" width="600" height="315">'
                if has else '<div class="noimg"></div>')
-        tag = '<span class="new">最新</span>' if latest else ""
+        lab = f"{html.escape(label)} · " if label else ""
         cards.append(
             f'    <a class="card" href="{href}">{img}<div class="body">'
-            f'<div class="meta">{tag}{html.escape(label)} · {html.escape(pub)}'
+            f'<div class="meta">{tag}{lab}{html.escape(pub)}'
             f'{" · " + html.escape(asof) if asof else ""}</div>'
             f'<div class="t">{html.escape(title)}</div></div></a>')
 
@@ -164,6 +187,7 @@ h1{{font-family:var(--serif);font-size:clamp(24px,6.5vw,30px);line-height:1.3;ma
 .card .body{{padding:12px 16px 14px}}
 .meta{{font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;align-items:center;gap:6px}}
 .new{{background:var(--accent);color:var(--paper);font-weight:700;font-size:12px;border-radius:999px;padding:1px 9px}}
+.sp{{background:var(--warn-soft);color:var(--warn);font-weight:700;font-size:12px;border-radius:999px;padding:1px 9px}}
 .t{{font-family:var(--serif);font-weight:700;font-size:19px;line-height:1.4;margin-top:4px}}
 .card:focus-visible,.back:focus-visible{{outline:3px solid var(--warn);outline-offset:2px}}
 .back{{align-self:flex-start;display:inline-flex;background:var(--accent);color:var(--paper);text-decoration:none;font-weight:700;border-radius:999px;padding:10px 20px}}
@@ -203,8 +227,12 @@ h1{{font-family:var(--serif);font-size:clamp(24px,6.5vw,30px);line-height:1.3;ma
 
 
 def main():
+    if len(sys.argv) == 2 and sys.argv[1] == "--index":
+        n = build_index()
+        print(f"完成：只重做往期目錄（每週 {n} 期，連特刊）")
+        return
     if len(sys.argv) != 2 or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", sys.argv[1]):
-        sys.exit("用法：python3 tools/archive.py YYYY-MM-DD")
+        sys.exit("用法：python3 tools/archive.py YYYY-MM-DD　或　python3 tools/archive.py --index")
     date = sys.argv[1]
     OGDIR.mkdir(parents=True, exist_ok=True)
     ensure_past_link(ROOT / "index.html")
