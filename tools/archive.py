@@ -12,8 +12,14 @@ YYYY-MM-DD 係本期出版日期。做以下幾樣（重複跑都安全）：
 4. 重新生成往期目錄 issues/index.html（最新一期連去主網址，舊期連去存檔頁）。
    特刊（special/YYYY-MM-DD-短名.html）都會一齊列入目錄，標明「特刊」。
 
-特刊發佈只需要重做目錄（唔會郁主頁同每週存檔）：
-    python3 tools/archive.py --index
+特刊（同每週筆記一樣：固定網址永遠係最新一期，舊期有自己嘅存檔網址）：
+    python3 tools/archive.py --special YYYY-MM-DD-短名
+先將特刊放喺 special/YYYY-MM-DD-短名.html，預覽圖放喺 special/og/YYYY-MM-DD-短名.png，再跑上面指令。佢會：
+1. 將呢期複製做 special/index.html（固定網址 https://ahwai79.github.io/weekly/special/），
+   預覽圖複製做 special/og.png，WhatsApp 預覽改用固定網址同固定圖。
+2. 每個特刊存檔頁（special/YYYY-MM-DD-*.html）加「存檔」提示，預覽改用嗰期自己嘅圖同網址。
+3. 重做往期目錄：最新一期特刊連去固定網址，舊特刊連去存檔頁。
+主頁 index.html 同每週存檔唔會郁。只想重做目錄：python3 tools/archive.py --index
 
 主網址 https://ahwai79.github.io/weekly/ 永遠係最新一期，唔受影響。
 """
@@ -99,6 +105,56 @@ def stamp_archive(path: Path):
     path.write_text(page, encoding="utf-8")
 
 
+ARCH_RE = re.compile(r'  <!-- archive-banner -->\n  <div class="arch">.*?</div>\n', re.S)
+ARCH_CSS_RE = re.compile(r'<style id="archive-css">.*?</style>\n?', re.S)
+
+
+def special_stems():
+    return sorted(f.stem for f in SPECIAL.glob("????-??-??-*.html")) if SPECIAL.exists() else []
+
+
+def stamp_special(path: Path):
+    """特刊存檔頁：加提示、改 OG 做嗰期自己嘅網址同圖。"""
+    stem = path.stem
+    page = path.read_text(encoding="utf-8")
+    label, pub, asof, title = parse(page)
+    url = f"{BASE}special/{stem}.html"
+    og = f"{BASE}special/og/{stem}.png" if (SPOG / f"{stem}.png").exists() else f"{BASE}og.png"
+    page = re.sub(r'<meta property="og:url" content="[^"]*">',
+                  f'<meta property="og:url" content="{url}">', page, count=1)
+    page = re.sub(r'<meta property="og:image" content="[^"]*">',
+                  f'<meta property="og:image" content="{og}">', page, count=1)
+    page = re.sub(r'<meta property="og:title" content="([^"]*?)(（存檔）)?">',
+                  lambda m: f'<meta property="og:title" content="{m.group(1)}（存檔）">', page, count=1)
+    if 'id="archive-css"' not in page:
+        page = page.replace("</head>", BANNER_CSS + "\n</head>", 1)
+    if "<!-- archive-banner -->" not in page:
+        asof_txt = f"，{asof}" if asof else ""
+        banner = ('  <!-- archive-banner -->\n'
+                  f'  <div class="arch">存檔頁｜特刊，{html.escape(pub)} 出版{html.escape(asof_txt)}。'
+                  f'數字只反映當時情況。<a href="{BASE}special/">看最新特刊 →</a>　<a href="{BASE}issues/">往期目錄</a></div>\n')
+        page = page.replace('<div class="wrap">\n', '<div class="wrap">\n' + banner, 1)
+    path.write_text(page, encoding="utf-8")
+
+
+def publish_special(stem: str):
+    src = SPECIAL / f"{stem}.html"
+    if not src.exists():
+        sys.exit(f"搵唔到 special/{stem}.html")
+    page = ARCH_CSS_RE.sub("", ARCH_RE.sub("", src.read_text(encoding="utf-8")))
+    page = re.sub(r'<meta property="og:url" content="[^"]*">',
+                  f'<meta property="og:url" content="{BASE}special/">', page, count=1)
+    page = re.sub(r'<meta property="og:image" content="[^"]*">',
+                  f'<meta property="og:image" content="{BASE}special/og.png">', page, count=1)
+    page = re.sub(r'<meta property="og:title" content="([^"]*?)（存檔）">',
+                  r'<meta property="og:title" content="\1">', page, count=1)
+    (SPECIAL / "index.html").write_text(page, encoding="utf-8")
+    if (SPOG / f"{stem}.png").exists():
+        shutil.copyfile(SPOG / f"{stem}.png", SPECIAL / "og.png")
+    for f in SPECIAL.glob("????-??-??-*.html"):
+        stamp_special(f)
+
+
 def thumb(date: str, ogdir: Path = OGDIR):
     src = ogdir / f"{date}.png"
     dst = ogdir / f"{date}-s.jpg"
@@ -127,6 +183,8 @@ def build_index():
         entries += [(f.stem[:10], True, f) for f in SPECIAL.glob("????-??-??-*.html")]
     entries.sort(key=lambda e: (e[0], e[1]), reverse=True)
     newest_weekly = files[0].stem if files else None
+    sp = special_stems()
+    newest_special = sp[-1] if sp and (SPECIAL / "index.html").exists() else None
 
     cards = []
     for key, is_special, f in entries:
@@ -134,7 +192,7 @@ def build_index():
         label, pub, asof, title = parse(f.read_text(encoding="utf-8"))
         if is_special:
             latest = False
-            href = f"../special/{stem}.html"
+            href = "../special/" if stem == newest_special else f"../special/{stem}.html"
             has = thumb(stem, SPOG)
             src = f"../special/og/{stem}-s.jpg"
             tag = '<span class="sp">特刊</span>'
@@ -227,12 +285,19 @@ h1{{font-family:var(--serif);font-size:clamp(24px,6.5vw,30px);line-height:1.3;ma
 
 
 def main():
+    if len(sys.argv) == 3 and sys.argv[1] == "--special":
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}-[a-z0-9-]+", sys.argv[2]):
+            sys.exit("用法：python3 tools/archive.py --special YYYY-MM-DD-短名")
+        publish_special(sys.argv[2])
+        n = build_index()
+        print(f"完成：special/index.html 已換成 {sys.argv[2]}，目錄已更新（每週 {n} 期，連特刊）")
+        return
     if len(sys.argv) == 2 and sys.argv[1] == "--index":
         n = build_index()
         print(f"完成：只重做往期目錄（每週 {n} 期，連特刊）")
         return
     if len(sys.argv) != 2 or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", sys.argv[1]):
-        sys.exit("用法：python3 tools/archive.py YYYY-MM-DD　或　python3 tools/archive.py --index")
+        sys.exit("用法：python3 tools/archive.py YYYY-MM-DD　或　--special YYYY-MM-DD-短名　或　--index")
     date = sys.argv[1]
     OGDIR.mkdir(parents=True, exist_ok=True)
     ensure_past_link(ROOT / "index.html")
