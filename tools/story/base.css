@@ -1,0 +1,17 @@
+@font-face{font-family:"Fustat";src:url(fonts/Fustat-500.woff2) format("woff2");font-weight:500}
+@font-face{font-family:"Fustat";src:url(fonts/Fustat-600.woff2) format("woff2");font-weight:600 900}
+@font-face{font-family:"Fustat";src:url(fonts/Fustat-400.woff2) format("woff2");font-weight:400}
+:root{
+  --green:#05414c; --sage:#d4e0d9; --navy:#132f4c; --sand:#e9e0d3; --white:#ffffff; --black:#161616;
+  --ink-soft:#3b4a4f; --muted:#5d6b6f;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:"Noto Sans CJK HK","Noto Sans TC",sans-serif;color:var(--black);-webkit-font-smoothing:antialiased}
+.num{font-family:"Fustat","Noto Sans CJK HK",sans-serif}
+.tag{display:inline-flex;align-items:center;gap:14px;font-weight:700;letter-spacing:1px}
+.mark{display:block}
+.board{position:relative;overflow:hidden}
+.deco{position:absolute;pointer-events:none}
+.board,.top{isolation:isolate}.deco{z-index:-1}
+.ill{position:absolute;overflow:visible}

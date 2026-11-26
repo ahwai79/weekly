@@ -14,29 +14,32 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Fustat:wght@500;600;700;800&display=swap">
 <style>
-/* Layout: one narrow reading column, like a printed client letter, with infographic touches: icon chips, bars, gauges and a gently animated hero. */
+/* Layout: one narrow reading column, like a printed client letter, with infographic touches: icon chips, bars, gauges and a gently animated hero. Colours and type follow the Team Servant design system (deep green, light green, dark blue, sand). */
 :root{
-  --bg:#F3F5F4; --paper:#FFFFFF; --ink:#16211F; --muted:#5B6866; --line:#DCE3E1;
-  --accent:#0E5A52; --accent-soft:#E2EEEB;
+  --bg:#F7F5F2; --paper:#FFFFFF; --ink:#161616; --muted:#566468; --line:#DFE6E2;
+  --accent:#05414C; --accent-soft:#D4E0D9;
   --ok:#2F7A4C; --ok-soft:#E3F1E8; --warn:#A86B00; --warn-soft:#FBF0D9; --bad:#A63A32; --bad-soft:#F7E3E1;
-  --track:#E7ECEA;
-  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --track:#ECE6DC;
+  --bar-hi:#05414C; --bar-lo:#8DB0A9; --bar-warm:#C49A63; --bar-old:#A9C1BA;
+  --serif:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
   --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --mono:"Fustat","Noto Sans TC",system-ui,sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0F1615; --paper:#162120; --ink:#E6ECEA; --muted:#9AA9A6; --line:#2A3735;
-  --accent:#6CC3B6; --accent-soft:#1D312E;
+  --bg:#06262D; --paper:#0B3239; --ink:#F2F5F3; --muted:#A9BDB8; --line:#1C4A52;
+  --accent:#D4E0D9; --accent-soft:#11414A;
   --ok:#7FCB98; --ok-soft:#1B2E23; --warn:#E6B65A; --warn-soft:#33291A; --bad:#EE8F86; --bad-soft:#3A2220;
-  --track:#24312F;
+  --track:#173F47;
+  --bar-hi:#D4E0D9; --bar-lo:#5E8F89; --bar-warm:#E0B987; --bar-old:#2F5E64;
   color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0F1615; --paper:#162120; --ink:#E6ECEA; --muted:#9AA9A6; --line:#2A3735;
-  --accent:#6CC3B6; --accent-soft:#1D312E;
+  --bg:#06262D; --paper:#0B3239; --ink:#F2F5F3; --muted:#A9BDB8; --line:#1C4A52;
+  --accent:#D4E0D9; --accent-soft:#11414A;
   --ok:#7FCB98; --ok-soft:#1B2E23; --warn:#E6B65A; --warn-soft:#33291A; --bad:#EE8F86; --bad-soft:#3A2220;
-  --track:#24312F;
+  --track:#173F47;
+  --bar-hi:#D4E0D9; --bar-lo:#5E8F89; --bar-warm:#E0B987; --bar-old:#2F5E64;
   color-scheme:dark}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
 .wrap{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px;display:flex;flex-direction:column;gap:22px}
@@ -52,7 +55,7 @@ svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 
 /* hero */
 .hero{margin:0;display:flex;flex-direction:column;gap:6px}
-.hero canvas{display:block;width:100%;max-width:100%;aspect-ratio:16/9;border-radius:14px;background:#10292C}
+.hero canvas{display:block;width:100%;max-width:100%;aspect-ratio:16/9;border-radius:14px;background:#05414C}
 .hero figcaption{font-size:12.5px;color:var(--muted);letter-spacing:.03em}
 
 /* one-minute summary */
@@ -62,10 +65,10 @@ svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .simple-list li{background:var(--paper);border-radius:12px;padding:14px;display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px 12px;align-items:center}
 .simple-list li > div{display:contents}
 .ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#fff}
-.ico.c1{background:#C8642F} .ico.c2{background:#2F7A4C} .ico.c3{background:#3D5A99} .ico.c4{background:#0E5A52}
+.ico.c1{background:#132F4C;color:#E9E0D3} .ico.c2{background:#D4E0D9;color:#05414C} .ico.c3{background:#E9E0D3;color:#132F4C} .ico.c4{background:#05414C;color:#D4E0D9}
 .simple-list .head{display:flex;align-items:center;justify-content:space-between;gap:6px 8px;flex-wrap:wrap;min-width:0}
 .simple-list .tag{font-weight:700;font-size:16px}
-.chip{font-family:var(--sans);font-size:13px;font-weight:600;border-radius:999px;padding:2px 10px;background:var(--accent-soft);color:var(--accent);white-space:nowrap;font-variant-numeric:tabular-nums}
+.chip{font-family:var(--sans);font-size:13px;font-weight:600;border-radius:999px;padding:2px 10px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
 .chip.warn{background:var(--warn-soft);color:var(--warn)} .chip.bad{background:var(--bad-soft);color:var(--bad)}
 .simple-list p{grid-column:1 / -1;margin:0;font-size:16.5px;line-height:1.75}
 .simple-more{margin:0 2px;font-size:14px;color:var(--accent);font-weight:700;display:flex;align-items:center;gap:6px}
@@ -88,21 +91,42 @@ svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .life-card p{margin:0}
 .bars{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
 .bars li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;font-size:13.5px;align-items:baseline}
-.bars .val{font-family:var(--mono);font-weight:600;font-variant-numeric:tabular-nums}
+.bars .val{font-family:var(--mono);font-weight:600}
 .bars .track{grid-column:1 / -1;height:10px;border-radius:999px;background:var(--track);overflow:hidden}
-.bars .fill{display:block;height:100%;width:var(--w);border-radius:999px;background:var(--accent);transform-origin:left;transition:transform 1.1s cubic-bezier(.2,.8,.2,1)}
-.bars .fill.alt{background:#C8642F} .bars .fill.soft{background:var(--muted);opacity:.55}
+.bars .fill{display:block;height:100%;width:var(--w);border-radius:999px;background:var(--bar-hi);transform-origin:left;transition:transform 1.1s cubic-bezier(.2,.8,.2,1)}
+.bars .fill.lo{background:var(--bar-lo)} .bars .fill.alt{background:var(--bar-warm)} .bars .fill.soft{background:var(--bar-old)}
 
 /* stats */
 .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.stat{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 10px;align-items:center}
-.stat .ico{width:34px;height:34px;border-radius:10px;background:var(--accent-soft);color:var(--accent);grid-row:span 2}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0;display:grid;align-content:start;grid-template-columns:auto minmax(0,1fr);gap:4px 10px;align-items:center}
+.stat .ico{width:34px;height:34px;border-radius:10px;background:#D4E0D9;color:#05414C;grid-row:span 2}
+.stat:nth-child(4n+2) .ico{background:#E9E0D3;color:#132F4C} .stat:nth-child(4n+3) .ico{background:#132F4C;color:#E9E0D3} .stat:nth-child(4n+4) .ico{background:#05414C;color:#D4E0D9}
 .stat .ico svg{width:20px;height:20px}
 .stat .k{font-size:13px;color:var(--muted);line-height:1.4}
-.stat .v{font-family:var(--mono);font-weight:600;font-size:clamp(18px,4.8vw,22px);font-variant-numeric:tabular-nums;line-height:1.3}
-.stat .d{grid-column:1 / -1;font-family:var(--sans);font-size:13px;font-variant-numeric:tabular-nums;display:inline-flex;align-items:center;gap:6px;justify-self:start;border-radius:999px;padding:1px 10px}
+.stat .v{font-family:var(--mono);font-weight:600;font-size:clamp(18px,4.8vw,22px);line-height:1.3}
+.stat .d{grid-column:1 / -1;font-family:var(--sans);font-size:13px;display:inline-flex;align-items:center;gap:6px;justify-self:start;border-radius:999px;padding:1px 10px}
 .d.down{color:var(--bad);background:var(--bad-soft)} .d.up{color:var(--warn);background:var(--warn-soft)} .d.flat{color:var(--muted);background:var(--track)}
 @media (max-width:360px){.stats{grid-template-columns:1fr}}
+/* trend sparkline inside stat cards (1 年 / 5 年) */
+.stats-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.stats-head .section-label{margin:0}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:2px;background:var(--paper)}
+.seg button{font:600 12.5px/1 var(--sans);border:0;background:none;color:var(--muted);padding:6px 12px;border-radius:999px;cursor:pointer;min-height:30px}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--paper)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.spark{grid-column:1 / -1;margin-top:6px;position:relative}
+.spark svg{display:block;width:100%;height:64px;overflow:visible;touch-action:pan-y}
+.spark .ln{fill:none;stroke:var(--accent);stroke-width:2;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:round}
+.spark .base{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3;opacity:.5;vector-effect:non-scaling-stroke}
+.spark .ar{fill:var(--accent);opacity:.10}
+.spark .cur{stroke:var(--muted);stroke-width:1;vector-effect:non-scaling-stroke;opacity:0}
+.spark.hover .cur{opacity:.6}
+.spark .dot{position:absolute;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--paper);pointer-events:none}
+.spark .meta{display:flex;justify-content:space-between;gap:6px;white-space:nowrap;font-size:11.5px;color:var(--muted);margin-top:4px;line-height:1.4}
+.spark .meta b{font-family:var(--mono);font-weight:600;color:var(--ink)}
+.spark-note{font-size:12px;color:var(--muted);margin:8px 2px 0;line-height:1.6}
+.js-anim .spark .ln{transition:none}
+
 
 /* thermometer with gauges */
 .thermo{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
@@ -124,7 +148,7 @@ svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .pill::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
 .pill.ok{color:var(--ok);background:var(--ok-soft)} .pill.warn{color:var(--warn);background:var(--warn-soft)} .pill.bad{color:var(--bad);background:var(--bad-soft)}
 .row p{margin:0;min-width:0}
-.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:500}
+.num{font-family:var(--mono);font-weight:500}
 
 /* mood */
 .mood{display:grid;grid-template-columns:56px minmax(0,1fr);gap:14px;align-items:start;background:var(--warn-soft);border-radius:14px;padding:16px}
@@ -142,7 +166,7 @@ svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .watch li{display:grid;grid-template-columns:62px minmax(0,1fr);gap:12px;align-items:center;background:var(--paper);border-radius:12px;padding:10px}
 .cal{border-radius:9px;overflow:hidden;border:1px solid var(--line);text-align:center;background:var(--paper);line-height:1.2}
 .cal .m{display:block;background:var(--accent);color:var(--paper);font-size:11px;font-weight:700;padding:2px 0;letter-spacing:.06em}
-.cal .dd{display:block;font-family:var(--mono);font-weight:600;font-size:16px;padding:5px 0 4px;font-variant-numeric:tabular-nums}
+.cal .dd{display:block;font-family:var(--mono);font-weight:600;font-size:16px;padding:5px 0 4px}
 
 /* special issue: reasons box */
 .why{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 16px}
@@ -162,7 +186,7 @@ svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .cta-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--paper);text-decoration:none;font-weight:700;border-radius:999px;padding:11px 20px;border:0;font-size:16px;font-family:var(--sans);cursor:pointer}
 .btn svg{width:20px;height:20px}
-.btn.wa{background:#1F8F55;color:#fff}
+.btn.wa{background:#05414C;color:#fff}
 .btn.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent);padding:9.5px 18px}
 .btn:focus-visible,.copy:focus-visible{outline:3px solid var(--warn);outline-offset:2px}
 .phone{font-family:var(--mono);font-size:15px;user-select:all}
@@ -265,9 +289,9 @@ svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stro
       <article class="life-card rv">
         <div class="top"><span class="ico c2"><svg class="i"><use href="#i-coins"/></svg></span><h3>定期存款</h3></div>
         <ul class="bars" aria-label="港元定存息率與香港通脹比較">
-          <li><span>大銀行 3 個月</span><span class="val">約 2.40%</span><span class="track"><span class="fill" style="--w:60%"></span></span></li>
-          <li><span>12 個月最高</span><span class="val">3.45%</span><span class="track"><span class="fill" style="--w:86.25%"></span></span></li>
-          <li><span>香港物價升幅（10 月）</span><span class="val">2.2%</span><span class="track"><span class="fill alt" style="--w:55%"></span></span></li>
+          <li><span>大銀行 3 個月</span><span class="val">約 2.40%</span><span class="track"><span class="fill lo" style="--w:60%"></span></span></li>
+          <li><span>12 個月最高</span><span class="val">3.45%</span><span class="track"><span class="fill lo" style="--w:86.25%"></span></span></li>
+          <li><span>香港物價升幅（10 月）</span><span class="val">2.2%</span><span class="track"><span class="fill" style="--w:55%"></span></span></li>
         </ul>
         <p class="cap">定存息率截至 11 月 20 日；橫條以 4% 為滿格</p>
         <p>12 個月定存最高 3.45%（富邦，要 100 萬元或以上新資金）；門檻低的也有 3.40%（天星銀行，1,000 元起）。以 10 萬元計，3.40% 比大銀行 3 個月的 2.40% 一年多收約 1,000 元。香港 10 月物價升 2.2%，比 9 月快，但定存息率仍跑贏物價。</p>
@@ -287,13 +311,14 @@ svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stro
   </section>
 
   <section>
-    <p class="section-label">本週數字：先看環球</p>
+    <div class="stats-head"><p class="section-label">本週數字：先看環球</p><div class="seg" role="group" aria-label="走勢圖時間"><button type="button" data-span="12" aria-pressed="true">1 年</button><button type="button" data-span="60" aria-pressed="false">5 年</button></div></div>
     <div class="stats">
-      <div class="stat rv"><span class="ico"><svg class="i"><use href="#i-bars"/></svg></span><div class="k">標普 500 指數</div><div class="v" data-count="6910" data-dec="0">6,910</div><div class="d down"><svg class="i" style="width:14px;height:14px"><use href="#i-down"/></svg>8.6% 按週</div></div>
-      <div class="stat rv"><span class="ico"><svg class="i"><use href="#i-pct"/></svg></span><div class="k">美國 10 年期債息</div><div class="v" data-count="4.93" data-dec="2" data-prefix="約 " data-suffix="%">約 4.93%</div><div class="d down"><svg class="i" style="width:14px;height:14px"><use href="#i-down"/></svg>約 0.22 個百分點</div></div>
-      <div class="stat rv"><span class="ico"><svg class="i"><use href="#i-drop"/></svg></span><div class="k">布蘭特油價</div><div class="v" data-count="92.57" data-dec="2" data-prefix="$">$92.57</div><div class="d down"><svg class="i" style="width:14px;height:14px"><use href="#i-down"/></svg>3.4% 按週</div></div>
-      <div class="stat rv"><span class="ico"><svg class="i"><use href="#i-city"/></svg></span><div class="k">恒生指數</div><div class="v" data-count="22411" data-dec="0">22,411</div><div class="d down"><svg class="i" style="width:14px;height:14px"><use href="#i-down"/></svg>5.2% 按週</div></div>
+      <div class="stat rv"><span class="ico"><svg class="i"><use href="#i-bars"/></svg></span><div class="k">標普 500 指數</div><div class="v" data-count="6910" data-dec="0">6,910</div><div class="d down"><svg class="i" style="width:14px;height:14px"><use href="#i-down"/></svg>8.6% 按週</div><div class="spark" data-series="spx" data-dec="0"></div></div>
+      <div class="stat rv"><span class="ico"><svg class="i"><use href="#i-pct"/></svg></span><div class="k">美國 10 年期債息</div><div class="v" data-count="4.93" data-dec="2" data-prefix="約 " data-suffix="%">約 4.93%</div><div class="d down"><svg class="i" style="width:14px;height:14px"><use href="#i-down"/></svg>約 0.22 個百分點</div><div class="spark" data-series="tnx" data-dec="2"></div></div>
+      <div class="stat rv"><span class="ico"><svg class="i"><use href="#i-drop"/></svg></span><div class="k">布蘭特油價</div><div class="v" data-count="92.57" data-dec="2" data-prefix="$">$92.57</div><div class="d down"><svg class="i" style="width:14px;height:14px"><use href="#i-down"/></svg>3.4% 按週</div><div class="spark" data-series="brent" data-dec="2"></div></div>
+      <div class="stat rv"><span class="ico"><svg class="i"><use href="#i-city"/></svg></span><div class="k">恒生指數</div><div class="v" data-count="22411" data-dec="0">22,411</div><div class="d down"><svg class="i" style="width:14px;height:14px"><use href="#i-down"/></svg>5.2% 按週</div><div class="spark" data-series="hsi" data-dec="0"></div></div>
     </div>
+    <p class="spark-note">走勢線以每月月底收市價繪畫，最後一點為 11 月 20 日收市；右下角為期內升跌，債息以百分點計。油價走勢以布蘭特現貨月底價繪畫（美國能源資訊署），最後一點為期貨收市價。過往表現並不代表將來表現。</p>
   </section>
 
   <section class="thermo" aria-labelledby="thermo-title">
@@ -391,6 +416,7 @@ svg.i{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stro
   </footer>
 </div>
 
+<script type="application/json" id="series">{"spx":{"end":"11月20日","start":"2021-11","v":[4567.0,4766.18,4515.55,4373.94,4530.41,4131.93,4132.15,3785.38,4130.29,3955.0,3585.62,3871.98,4080.11,3839.5,4076.6,3970.15,4109.31,4169.48,4179.83,4450.38,4588.96,4507.66,4288.05,4193.8,4567.8,4769.83,4845.65,5096.27,5254.35,5035.69,5277.51,5460.48,5522.3,5648.4,5762.48,5705.45,6032.38,5881.63,6040.53,5954.5,5611.85,5569.06,5911.69,6204.95,6339.39,6460.26,6688.46,6840.2,6849.09,6845.5,6939.03,6878.88,6528.52,7209.01,7580.06,7499.36,7489.72,7686.14,7651.54,7580.08,6910.0]},"tnx":{"end":"11月20日","start":"2021-11","unit":"pp","suf":"%","v":[1.43,1.52,1.79,1.83,2.32,2.89,2.85,2.98,2.67,3.15,3.83,4.1,3.68,3.88,3.52,3.92,3.48,3.44,3.64,3.81,3.97,4.09,4.59,4.88,4.37,3.88,3.99,4.25,4.2,4.69,4.51,4.36,4.09,3.91,3.81,4.28,4.18,4.58,4.58,4.24,4.23,4.17,4.41,4.24,4.37,4.23,4.16,4.11,4.02,4.18,4.26,3.97,4.3,4.4,4.45,4.44,4.75,4.75,5.29,4.94,4.93]},"brent":{"end":"11月20日","start":"2021-11","pre":"$","v":[70.86,77.24,92.35,103.08,107.29,108.36,125.53,119.78,111.51,96.55,88.9,93.3,85.61,82.82,83.42,83.21,79.19,81.32,71.98,74.51,85.22,87.29,95.86,86.82,81.72,77.69,82.98,84.57,86.17,88.23,79.41,87.26,81.39,80.2,72.35,73.25,74.16,74.58,77.11,74.76,77.23,63.37,64.32,68.15,73.43,67.83,68.52,65.44,64.07,61.35,72.25,71.32,126.69,124.24,92.88,70.46,96.95,89.75,115.91,120.15,92.57]},"hsi":{"end":"11月20日","start":"2021-11","v":[23475.26,23397.67,23802.26,22713.02,21996.85,21089.39,21415.2,21859.79,20156.51,19954.39,17222.83,14687.02,18597.23,19781.41,21842.33,19785.94,20400.11,19894.57,18234.27,18916.43,20078.94,18382.06,17809.66,17112.48,17042.88,17047.39,15485.07,16511.44,16541.42,17763.03,18079.61,17718.61,17344.6,17989.07,21133.68,20317.33,19423.61,20059.95,20225.11,22941.32,23119.58,22119.41,23289.77,24072.28,24773.33,25077.62,26855.56,25906.65,25858.89,25630.54,27387.11,26630.54,24788.14,25776.53,25182.39,22881.02,25884.43,25566.99,24613.27,23294.42,22411.0]}}</script>
 <script>
 // 聯絡資料：國家碼＋號碼，只用數字
 const WA_NUMBER = "85266890491";
@@ -464,6 +490,68 @@ function countUp(el){
   setTimeout(function(){ document.querySelectorAll(".rv, .gauge").forEach(function(el){ el.classList.add("in"); }); }, 4000);
 })();
 
+// Trend sparklines: monthly month-end closes, last point = this week's close. One toggle switches every card between 1 年 and 5 年.
+(function sparks(){
+  const src = document.getElementById("series"); if (!src) return;
+  const DATA = JSON.parse(src.textContent), NS = "http://www.w3.org/2000/svg";
+  const W = 300, H = 64, PAD = 4;
+  function label(key, idx){
+    const d = DATA[key]; if (idx === d.v.length - 1) return d.end;
+    const y0 = +d.start.slice(0,4), m0 = +d.start.slice(5) - 1, t = m0 + idx;
+    return (y0 + Math.floor(t/12)) + "年" + (t%12 + 1) + "月";
+  }
+  function fmt(v, dec){ return v.toLocaleString("en-US",{minimumFractionDigits:dec,maximumFractionDigits:dec}); }
+  function draw(box, span, animate){
+    const key = box.dataset.series, dec = +(box.dataset.dec||0), all = DATA[key].v;
+    const off = Math.max(0, all.length - 1 - span), v = all.slice(off);
+    const lo = Math.min.apply(null, v), hi = Math.max.apply(null, v), r = (hi - lo) || 1;
+    const X = function(i){ return i / (v.length - 1) * W; }, Y = function(x){ return PAD + (1 - (x - lo) / r) * (H - PAD*2); };
+    let d = ""; v.forEach(function(x,i){ d += (i ? "L" : "M") + X(i).toFixed(1) + " " + Y(x).toFixed(1); });
+    const pp = DATA[key].unit === "pp", pre = DATA[key].pre || "", suf = DATA[key].suf || "";
+    const chg = pp ? (v[v.length-1] - v[0]) : (v[v.length-1] / v[0] - 1) * 100, sign = chg >= 0 ? "+" : "−";
+    const chgTxt = sign + Math.abs(chg).toFixed(pp ? 2 : 1) + (pp ? " 百分點" : "%");
+    const per = span === 12 ? "1 年" : "5 年";
+    box.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" role="img" aria-label="' + per + '走勢，期內' + (chg>=0?"升":"跌") + chgTxt.slice(1) + '">' +
+      '<path class="ar" d="' + d + 'L' + W + ' ' + H + 'L0 ' + H + 'Z"/>' +
+      '<line class="base" x1="0" x2="' + W + '" y1="' + Y(v[0]).toFixed(1) + '" y2="' + Y(v[0]).toFixed(1) + '"/>' +
+      '<path class="ln" pathLength="100" d="' + d + '"/><line class="cur" y1="0" y2="' + H + '"/></svg>' +
+      '<span class="dot"></span><div class="meta"><span class="lab">' + label(key, off) + '起</span><span class="rt"><b>' + chgTxt + '</b></span></div>';
+    const svg = box.querySelector("svg"), dot = box.querySelector(".dot"), cur = box.querySelector(".cur"), lab = box.querySelector(".lab"), rt = box.querySelector(".rt"), rtHTML = rt.innerHTML;
+    function place(i){ dot.style.left = (X(i)/W*100) + "%"; dot.style.top = (Y(v[i]) / H * svg.getBoundingClientRect().height) + "px"; }
+    place(v.length - 1);
+    const ln = box.querySelector(".ln");
+    if (animate && !reduceMotion) {
+      const L = 100;
+      ln.style.strokeDasharray = L; ln.style.strokeDashoffset = L; ln.getBoundingClientRect();
+      ln.style.transition = "stroke-dashoffset 1.2s cubic-bezier(.2,.8,.2,1)"; ln.style.strokeDashoffset = 0;
+      dot.style.opacity = 0; setTimeout(function(){ dot.style.transition = "opacity .3s"; dot.style.opacity = 1; }, 1000);
+    }
+    function pick(e){
+      const rc = svg.getBoundingClientRect(), i = Math.max(0, Math.min(v.length-1, Math.round((e.clientX - rc.left) / rc.width * (v.length-1))));
+      box.classList.add("hover"); cur.setAttribute("x1", X(i)); cur.setAttribute("x2", X(i)); place(i);
+      lab.textContent = label(key, off + i); rt.innerHTML = "<b>" + pre + fmt(v[i], dec) + suf + "</b>";
+    }
+    function reset(){ box.classList.remove("hover"); place(v.length - 1); lab.textContent = label(key, off) + "起"; rt.innerHTML = rtHTML; }
+    svg.addEventListener("pointermove", pick); svg.addEventListener("pointerdown", pick);
+    svg.addEventListener("pointerleave", reset); svg.addEventListener("pointercancel", reset);
+  }
+  const boxes = document.querySelectorAll(".spark[data-series]");
+  let span = 12;
+  boxes.forEach(function(b){ draw(b, span, false); });
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver(function(es){ es.forEach(function(en){ if (en.isIntersecting) { draw(en.target, span, true); io.unobserve(en.target); } }); }, {threshold:0.4});
+    boxes.forEach(function(b){ io.observe(b); });
+  }
+  document.querySelectorAll(".seg button").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      span = +btn.dataset.span;
+      document.querySelectorAll(".seg button").forEach(function(o){ o.setAttribute("aria-pressed", o === btn ? "true" : "false"); });
+      boxes.forEach(function(b){ draw(b, span, true); });
+    });
+  });
+  window.addEventListener("resize", function(){ boxes.forEach(function(b){ draw(b, span, false); }); });
+})();
+
 // Hero illustration (第 5 期): "風暴來襲，資金避港".
 // A stormy sea: a coral ship (股票, 標普 500 一週 −8.6%) tosses outside the breakwater; gold boats (資金) sail into the harbour,
 // where the signboard reads 美國 10 年期債息 4.93%（上週 5.15%）. Everything draws once; afterwards only the ship rocks gently.
@@ -503,9 +591,9 @@ function countUp(el){
 
     // stormy sky
     const sky = g.createLinearGradient(0, bt, 0, sy);
-    sky.addColorStop(0, "#0C2224"); sky.addColorStop(1, "#24423F");
+    sky.addColorStop(0, "#05414C"); sky.addColorStop(1, "#2E6670");
     g.fillStyle = sky; g.fillRect(0, bt, w, sy - bt);
-    g.fillStyle = "rgba(8,22,24,0.55)";
+    g.fillStyle = "rgba(3,38,45,0.55)";
     [[0.10,0.08,0.16],[0.32,0.05,0.14],[0.55,0.10,0.15],[0.80,0.06,0.16]].forEach(function(c){
       g.beginPath(); g.ellipse(w*c[0], h*c[1], w*c[2], h*0.09, 0, 0, Math.PI*2); g.fill();
     });
@@ -516,15 +604,15 @@ function countUp(el){
       g.beginPath(); g.moveTo(rx, ry); g.lineTo(rx + w*0.018, ry + h*0.06); g.stroke();
     }
     // distant hills behind the harbour
-    g.fillStyle = "#18352F";
+    g.fillStyle = "#0A3A43";
     g.beginPath(); g.moveTo(w*0.55, sy); g.quadraticCurveTo(w*0.78, sy - h*0.16, w, sy - h*0.10); g.lineTo(w, sy); g.closePath(); g.fill();
 
     // sea
     const sea = g.createLinearGradient(0, sy, 0, bb);
-    sea.addColorStop(0, "#123A3C"); sea.addColorStop(1, "#0A2224");
+    sea.addColorStop(0, "#0A4550"); sea.addColorStop(1, "#04303A");
     g.fillStyle = sea; g.fillRect(0, sy, w, bb - sy);
     // calm harbour water (lighter)
-    g.fillStyle = "rgba(108,195,182,0.10)";
+    g.fillStyle = "rgba(212,224,217,0.10)";
     g.beginPath(); g.moveTo(w*0.70, sy); g.lineTo(w, sy); g.lineTo(w, h*0.86); g.quadraticCurveTo(w*0.82, h*0.86, w*0.66, h*0.80); g.closePath(); g.fill();
     // rough waves outside
     g.strokeStyle = "rgba(230,240,238,0.22)"; g.lineWidth = Math.max(1.5, w*0.003); g.lineCap = "round";
@@ -545,9 +633,9 @@ function countUp(el){
     const lx = w*0.695, lb = sy - h*0.01;
     g.fillStyle = "#E6ECEA"; g.beginPath(); g.moveTo(lx - w*0.018, lb); g.lineTo(lx + w*0.018, lb); g.lineTo(lx + w*0.011, lb - h*0.22); g.lineTo(lx - w*0.011, lb - h*0.22); g.closePath(); g.fill();
     g.fillStyle = "#E2674F"; g.fillRect(lx - w*0.015, lb - h*0.08, w*0.030, h*0.035); g.fillRect(lx - w*0.012, lb - h*0.17, w*0.024, h*0.03);
-    g.fillStyle = "#F2C26B"; g.beginPath(); g.arc(lx, lb - h*0.24, w*0.013, 0, Math.PI*2); g.fill();
+    g.fillStyle = "#E9E0D3"; g.beginPath(); g.arc(lx, lb - h*0.24, w*0.013, 0, Math.PI*2); g.fill();
     const beam = g.createRadialGradient(lx, lb - h*0.24, 0, lx, lb - h*0.24, w*0.16);
-    beam.addColorStop(0, "rgba(242,194,107,0.35)"); beam.addColorStop(1, "rgba(242,194,107,0)");
+    beam.addColorStop(0, "rgba(233,224,211,0.35)"); beam.addColorStop(1, "rgba(233,224,211,0)");
     g.fillStyle = beam; g.beginPath(); g.moveTo(lx, lb - h*0.24); g.lineTo(lx - w*0.16, lb - h*0.33); g.lineTo(lx - w*0.16, lb - h*0.17); g.closePath(); g.fill();
 
     // small gold boats (資金) sail into the harbour once
@@ -555,15 +643,15 @@ function countUp(el){
     // dashed route
     const rp = ease((p - 0.05)/0.5);
     if (rp > 0){
-      g.save(); g.setLineDash([w*0.008, w*0.010]); g.strokeStyle = "rgba(242,194,107," + (0.55*rp).toFixed(3) + ")"; g.lineWidth = Math.max(1.5, w*0.003);
+      g.save(); g.setLineDash([w*0.008, w*0.010]); g.strokeStyle = "rgba(233,224,211," + (0.55*rp).toFixed(3) + ")"; g.lineWidth = Math.max(1.5, w*0.003);
       g.beginPath(); g.moveTo(w*0.42, h*0.83); g.quadraticCurveTo(w*0.60, h*0.92, w*0.76, h*0.76); g.stroke(); g.restore();
-      g.fillStyle = "rgba(242,194,107," + (0.9*rp).toFixed(3) + ")"; g.font = "700 " + Math.max(9, w*0.020*ts) + "px " + FONT; g.textAlign = "left"; g.textBaseline = "middle";
+      g.fillStyle = "rgba(233,224,211," + (0.9*rp).toFixed(3) + ")"; g.font = "700 " + Math.max(9, w*0.020*ts) + "px " + FONT; g.textAlign = "left"; g.textBaseline = "middle";
       g.fillText("資金", w*0.55, h*0.81);
     }
     boats.forEach(function(B){
       const k = ease((p - B[4])/0.6);
       const x = w*(B[0] + (B[2]-B[0])*k), y = h*(B[1] + (B[3]-B[1])*k), s = w*0.022;
-      g.fillStyle = "#F2C26B"; g.beginPath(); g.moveTo(x - s, y); g.lineTo(x + s, y); g.lineTo(x + s*0.7, y + s*0.45); g.lineTo(x - s*0.7, y + s*0.45); g.closePath(); g.fill();
+      g.fillStyle = "#E9E0D3"; g.beginPath(); g.moveTo(x - s, y); g.lineTo(x + s, y); g.lineTo(x + s*0.7, y + s*0.45); g.lineTo(x - s*0.7, y + s*0.45); g.closePath(); g.fill();
       g.strokeStyle = "#E6ECEA"; g.lineWidth = Math.max(1, w*0.002); g.beginPath(); g.moveTo(x, y); g.lineTo(x, y - s*1.3); g.stroke();
       g.fillStyle = "#E6ECEA"; g.beginPath(); g.moveTo(x, y - s*1.3); g.lineTo(x + s*0.8, y - s*0.2); g.lineTo(x, y - s*0.2); g.closePath(); g.fill();
     });

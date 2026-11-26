@@ -226,7 +226,7 @@ def build_index():
 <title>往期筆記</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Fustat:wght@500;600;700;800&display=swap">
 <style>
 {tokens}
 *{{box-sizing:border-box}}
@@ -241,7 +241,7 @@ h1{{font-family:var(--serif);font-size:clamp(24px,6.5vw,30px);line-height:1.3;ma
 .lead{{margin:4px 0 0;color:var(--muted)}}
 .list{{display:flex;flex-direction:column;gap:14px}}
 .card{{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;color:var(--ink);text-decoration:none}}
-.card img,.noimg{{display:block;width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;background:#10292C}}
+.card img,.noimg{{display:block;width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;background:#05414C}}
 .card .body{{padding:12px 16px 14px}}
 .meta{{font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;align-items:center;gap:6px}}
 .new{{background:var(--accent);color:var(--paper);font-weight:700;font-size:12px;border-radius:999px;padding:1px 9px}}
